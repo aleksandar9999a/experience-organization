@@ -1,16 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <div>
+    <Navbar />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Navbar from "./components/navbar/Navbar";
+
 export default {
-  name: 'App',
-  components: {
-    
-  }
-}
+  name: "App",
+  components: {Navbar}
+};
 </script>
 
 <style>
