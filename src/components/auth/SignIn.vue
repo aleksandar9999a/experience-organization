@@ -3,7 +3,7 @@
     <md-content class="md-elevation-3">
       <div class="title">
         <img src="./../../assets/logo.png" />
-        <div class="md-title">Experience Organizations</div>
+        <div class="md-title">Experience Organizer</div>
         <div class="md-body-1">A beautiful application for easy organization tracking!</div>
       </div>
 

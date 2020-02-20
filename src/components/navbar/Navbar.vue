@@ -1,9 +1,9 @@
 <template>
   <md-toolbar class="md-accent">
     <img src="./../../assets/logo.png" class="logo" />
-    <router-link class="md-title" to="/">Experience Organization</router-link>
+    <router-link class="md-title" to="/">Experience Organizer</router-link>
     <div v-if="menuVisible" class="center">
-      <md-button class="md-primary">My Organizations</md-button>
+      <md-button class="md-primary">My Organizer</md-button>
       <md-button class="md-primary">Search</md-button>
       <md-button class="md-primary">My profile</md-button>
     </div>
