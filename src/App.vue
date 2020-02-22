@@ -2,15 +2,20 @@
   <div>
     <Navbar />
     <router-view></router-view>
+    <Notifications></Notifications>
   </div>
 </template>
 
 <script>
 import Navbar from "./components/navbar/Navbar";
+import Notifications from "./components/notifications/Notifications";
 
 export default {
   name: "App",
-  components: {Navbar}
+  components: {Navbar, Notifications},
+  errorCaptured: function (err) {
+    this.$emit('show:notification', err.message);
+  }
 };
 </script>
 
