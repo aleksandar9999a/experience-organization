@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { signIn } from './../../services/auth.service'
+
 export default {
   name: "SignIn",
   data() {
@@ -43,11 +45,10 @@ export default {
     };
   },
   methods: {
-    auth() {
+    async auth() {
       this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 5000);
+      await signIn(this.login.email, this.login.password);
+      this.loading = false;
     }
   }
 };
@@ -81,7 +82,6 @@ export default {
     padding: 5%;
     width: 35%;
     height: 55%;
-    min-width: 300px;
     position: relative;
   }
   .loading-overlay {
