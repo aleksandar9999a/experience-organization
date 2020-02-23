@@ -1,22 +1,18 @@
 <template>
   <md-toolbar class="material-blue">
     <md-button class="logo" to='/'><img src="./../../assets/logo.png" class="logo" /> Experience Organizer</md-button>
-    <div v-if="menuVisible" class="center">
+    <div class="center">
       <md-button class="md-accent" to="/organizer">My Organizer</md-button>
       <md-button class="md-accent" to="/search">Search</md-button>
       <md-button class="md-accent" to="/profile">My profile</md-button>
     </div>
-    <div v-else class="right">
-      <md-button class="md-accent" to="/auth">Sign In / Sign Up</md-button>
-    </div>
-    <div v-if="menuVisible" class="right">
+    <div class="right">
       <md-button class="md-accent" v-on:click="signOut()">Log Out</md-button>
     </div>
   </md-toolbar>
 </template>
 
 <script>
-import { auth } from './../../firebase'
 import { logOut } from './../../services/auth.service'
 
 export default {
@@ -27,21 +23,9 @@ export default {
     };
   },
   methods: {
-    setMenuVisible(state) {
-      this.menuVisible = state;
-    },
     signOut(){
       logOut();
     }
-  },
-  created: function() {
-    auth.onAuthStateChanged(u => {
-      if (u) {
-        this.setMenuVisible(true);
-      } else{
-        this.setMenuVisible(false);
-      }
-    })
   }
 };
 </script>
