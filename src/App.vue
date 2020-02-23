@@ -12,6 +12,7 @@ import Navbar from "./components/navbar/Navbar";
 import Notifications from "./components/notifications/Notifications";
 import Loader from './components/loader/Loader';
 import { auth } from './firebase';
+import { addNotification } from './services/notifications';
 
 export default {
   name: "App",
@@ -24,13 +25,10 @@ export default {
   methods: {
     setMenuVisible(state) {
       this.menuVisible = state;
-    },
-    showNotification(message){
-      this.$store.commit({type: 'showNotifications', message});
     }
   },
   errorCaptured: function (err) {
-    this.showNotification(err.message);
+    addNotification(err.message);
   },
   created: function() {
     auth.onAuthStateChanged(u => {
