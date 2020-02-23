@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { signIn } from './../../services/auth.service'
+import { signIn } from "./../../services/auth.service";
 
 export default {
   name: "SignIn",
@@ -47,8 +47,9 @@ export default {
   methods: {
     async auth() {
       this.loading = true;
-      await signIn(this.login.email, this.login.password);
-      this.loading = false;
+      await signIn(this.login.email, this.login.password).finally(() => {
+        this.loading = false;
+      });
     }
   }
 };
