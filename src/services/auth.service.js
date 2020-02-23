@@ -39,7 +39,7 @@ export async function updateUserData(userdata) {
 
 export async function logOut() {
     store.commit('showLoader');
-    return await auth.signOut().then(() => { router.push('/auth'); }).finally(() => { store.commit('hideLoader'); });
+    return await auth.signOut().then(() => { addNotification('Successfull Log Out!'); router.push('/auth'); }).finally(() => { store.commit('hideLoader'); });
 }
 
 async function uploadImage(img) {
