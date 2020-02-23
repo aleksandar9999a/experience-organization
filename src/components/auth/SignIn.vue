@@ -5,13 +5,23 @@
         <h2 class="title">SIGN IN</h2>
         <md-field>
           <label>E-mail</label>
-          <md-input v-model="login.email" autofocus></md-input>
+          <md-input v-model="email" v-model.trim="$v.email.$model"></md-input>
         </md-field>
+
+        <div v-if="$v.email.$dirty" class="error">
+          <span v-if="!$v.email.required">Email is required!</span>
+          <span v-else-if="!$v.email.email">Invalid email!</span>
+        </div>
 
         <md-field md-has-password>
           <label>Password</label>
-          <md-input v-model="login.password" type="password"></md-input>
+          <md-input v-model="password" v-model.trim="$v.password.$model" type="password"></md-input>
         </md-field>
+
+        <div v-if="$v.password.$dirty" class="error">
+          <span v-if="!$v.password.required">Email is required!</span>
+          <span v-else-if="!$v.password.minLength || !$v.password.maxLength">Minimum length is 8 chars, max - 20!</span>
+        </div>
       </div>
 
       <div class="actions md-layout md-alignment-center">
@@ -26,23 +36,37 @@
 
 <script>
 import { signIn } from "./../../services/auth.service";
+import { validationMixin } from "vuelidate";
+import {
+  required,
+  email,
+  minLength,
+  maxLength
+} from "vuelidate/lib/validators";
 
 export default {
   name: "SignIn",
+  mixins: [validationMixin],
   data() {
     return {
-      login: {
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: ""
     };
+  },
+  validations: {
+    email: { required, email },
+    password: { required, minLength: minLength(8), maxLength: maxLength(20)}
   },
   methods: {
     async auth() {
-      await signIn(this.login.email, this.login.password);
+      if (!this.$v.$invalid) {
+        await signIn(this.email, this.password);
+      } else {
+        this.$store.commit({ type: 'showNotifications', message: 'Form is invalid!' })
+      }
     },
-    reg(){
-      this.$store.commit('changeRegOrLog');
+    reg() {
+      this.$store.commit("changeRegOrLog");
     }
   }
 };
@@ -54,9 +78,20 @@ export default {
   padding: 20px;
 }
 
+.error {
+  border: 2px;
+  border-color: red;
+  color: red;
+  margin-left: 30px;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
+}
+
+.md-field {
+  margin: 20px;
 }
 
 .md-field.md-focused label {
