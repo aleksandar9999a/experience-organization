@@ -1,6 +1,6 @@
 <template>
   <div class="auth md-layout">
-    <div class="container md-layout md-gutter">
+    <div class="container md-layout">
         <div class="logo md-layout-item md-small-size-100">
           <Logo></Logo>
         </div>
