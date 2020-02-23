@@ -17,11 +17,6 @@ import { logOut } from './../../services/auth.service'
 
 export default {
   name: "Navbar",
-  data: () => {
-    return {
-      menuVisible: false
-    };
-  },
   methods: {
     signOut(){
       logOut();
