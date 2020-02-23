@@ -38,7 +38,7 @@
       </div>
 
       <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-primary" @click="showLoader">Registered</md-button>
+        <md-button class="md-raised md-primary" @click="registered">Registered</md-button>
       </div>
       <div class="actions md-layout md-alignment-center">
         <md-button class="md-raised md-accent" @click="log">Log In</md-button>
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import { signUp } from "./../../services/auth.service";
+
 export default {
   name: "SignUp",
   data() {
@@ -63,11 +65,8 @@ export default {
     };
   },
   methods: {
-    showLoader() {
-      this.$store.commit("showLoader");
-      setTimeout(() => {
-        this.$store.commit("hideLoader");
-      }, 5000);
+    async registered() {
+      await signUp(this.reg);
     },
     log() {
       this.$store.commit("changeRegOrLog");
