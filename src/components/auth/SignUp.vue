@@ -14,12 +14,9 @@
     </div>
 
     <div class="actions md-layout md-alignment-center">
-      <md-button class="md-raised md-primary">Registered</md-button>
+      <md-button class="md-raised md-primary" @click="showLoader">Registered</md-button>
     </div>
 
-    <div class="loading-overlay" v-if="loading">
-      <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
-    </div>
   </div>
 </template>
 
@@ -28,13 +25,20 @@ export default {
   name: "SignUp",
   data() {
     return {
-      loading: false,
       reg: {
         email: "",
         password: ""
       }
     };
   },
+  methods: {
+      showLoader() {
+          this.$store.commit('showLoader')
+          setTimeout(() => {
+            this.$store.commit('hideLoader')
+          }, 5000)
+      }
+  }
 };
 </script>
 
@@ -76,19 +80,5 @@ export default {
 
 label {
   padding-left: 10px !important;
-}
-
-.loading-overlay {
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
