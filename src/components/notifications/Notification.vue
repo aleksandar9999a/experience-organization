@@ -39,4 +39,8 @@ export default {
   padding-top: 5%;
   color: white;
 }
+
+.md-button {
+  margin-left: auto;
+}
 </style>
