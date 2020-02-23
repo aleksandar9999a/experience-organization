@@ -1,21 +1,31 @@
 <template>
-    <md-snackbar md-position="left" :md-active="notifications" md-persistent>
-      <span>{{notificationMessage}}</span>
-    </md-snackbar>
+  <div class="notifications">
+    <Notification
+      v-for="(message, index) of list"
+      :key="index"
+      :msg="message"
+      :id="index"
+      v-bind:style="{ bottom: (6 + (index * 7)) + '%' }"
+    ></Notification>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { listOfNotifications } from "./../../services/notifications";
+import Notification from "./Notification";
 
 export default {
-    name: 'Notifications',
-    data: () => ({
-    position: 'left'
+  name: "Notifications",
+  components: { Notification },
+  data: () => ({
+    position: "left",
+    list: []
   }),
-  computed: mapState(["notifications", "notificationMessage"])
-}
+  created: function() {
+    this.list = listOfNotifications;
+  }
+};
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
 </style>
