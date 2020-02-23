@@ -35,7 +35,7 @@ export const store = new Vuex.Store({
       setInterval(() => {
         state.notifications = false;
         state.notificationMessage = '';
-      }, 3000);
+      }, 5000);
     },
     showLoader(state) {
       state.loading = true;
