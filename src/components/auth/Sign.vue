@@ -1,29 +1,31 @@
 <template>
-  <div class="auth">
-    <div class="center">
-      <div class="logo-container">
-        <img src="./../../assets/logo.png" class="logo block" />
-        <h1>Experience Organizer</h1>
-        <h5 class="md-body-1">A beautiful application for easy organization tracking!</h5>
+  <div class="auth md-layout">
+    <div class="container md-layout md-gutter">
+        <div class="logo md-layout-item md-small-size-100">
+          <Logo></Logo>
+        </div>
+        <div class="sign md-layout-item md-small-size-100">
+          <SignIn v-if="regOrLog"></SignIn>
+          <SignUp v-else></SignUp>
+        </div>
       </div>
-    </div>
-    <div class="center md-layout">
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-    </div>
   </div>
 </template>
 
 <script>
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Logo from "./Logo";
+import { mapState } from 'vuex';
 
 export default {
   name: "Sign",
   components: {
     SignIn,
-    SignUp
-  }
+    SignUp,
+    Logo
+  },
+  computed: mapState(["regOrLog"])
 };
 </script>
 
@@ -31,21 +33,24 @@ export default {
 .auth {
   background: linear-gradient(95deg, #f8236aad 40%, #fae842 65%) !important;
   min-height: 1000px;
+  padding-bottom: 15%;
+  display: inline-flex;
 }
 
-.logo-container {
-  padding-top: 4%;
-  display: inline-block;
-  text-align: center;
-}
-
-.center {
-  justify-content: center;
-  display: flex;
+.container {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo {
-  width: auto;
-  max-height: 200px;
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sign {
+  width: 40%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 </style>

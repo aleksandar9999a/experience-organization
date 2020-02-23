@@ -1,20 +1,25 @@
 <template>
-  <div class="left-container">
-    <div class="form">
-      <h2 class="title">SIGN IN</h2>
-      <md-field>
-        <label>E-mail</label>
-        <md-input v-model="login.email" autofocus></md-input>
-      </md-field>
+  <div class="container">
+    <div class="center">
+      <div class="form">
+        <h2 class="title">SIGN IN</h2>
+        <md-field>
+          <label>E-mail</label>
+          <md-input v-model="login.email" autofocus></md-input>
+        </md-field>
 
-      <md-field md-has-password>
-        <label>Password</label>
-        <md-input v-model="login.password" type="password"></md-input>
-      </md-field>
-    </div>
+        <md-field md-has-password>
+          <label>Password</label>
+          <md-input v-model="login.password" type="password"></md-input>
+        </md-field>
+      </div>
 
-    <div class="actions md-layout md-alignment-center">
-      <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
+      <div class="actions md-layout md-alignment-center">
+        <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
+      </div>
+      <div class="actions md-layout md-alignment-center">
+        <md-button class="md-raised md-accent" @click="reg">Register</md-button>
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +39,10 @@ export default {
   },
   methods: {
     async auth() {
-       await signIn(this.login.email, this.login.password);
+      await signIn(this.login.email, this.login.password);
+    },
+    reg(){
+      this.$store.commit('changeRegOrLog');
     }
   }
 };
@@ -46,6 +54,21 @@ export default {
   padding: 20px;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-field.md-focused label {
+  font-size: 17px;
+  top: -10px;
+}
+
+.md-field.md-has-value label {
+  font-size: 13px;
+  top: -10px;
+}
+
 .md-button {
   border-bottom-right-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -53,13 +76,9 @@ export default {
   min-width: 150px;
 }
 
-.left-container {
-  display: inline-block;
+.container {
+  display: flex;
   align-items: center;
-  justify-content: left;
-  position: relative;
-  margin: 5%;
-  min-width: 23rem;
 }
 
 .md-input {
@@ -69,6 +88,7 @@ export default {
   border-radius: 2rem;
   padding-left: 20px !important;
   border-bottom: none;
+  min-width: 23rem;
 }
 
 .md-field.md-theme-default:after,
@@ -79,5 +99,4 @@ export default {
 label {
   padding-left: 10px !important;
 }
-
 </style>
