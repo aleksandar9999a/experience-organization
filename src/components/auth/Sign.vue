@@ -7,8 +7,10 @@
         <h5 class="md-body-1">A beautiful application for easy organization tracking!</h5>
       </div>
     </div>
-    <SignIn></SignIn>
-    <SignUp></SignUp>
+    <div class="center md-layout">
+      <SignIn></SignIn>
+      <SignUp></SignUp>
+    </div>
   </div>
 </template>
 
@@ -27,7 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .auth {
-  background: linear-gradient(110deg, #f8236aad 35%, #fae842 50%) !important;
+  background: linear-gradient(95deg, #f8236aad 40%, #fae842 65%) !important;
+  min-height: 1000px;
 }
 
 .logo-container {

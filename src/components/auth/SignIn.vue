@@ -54,13 +54,20 @@ export default {
   padding: 20px;
 }
 
+.md-button {
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-radius: 2rem;
+  min-width: 150px;
+}
+
 .left-container {
   display: inline-block;
   align-items: center;
   justify-content: left;
   position: relative;
-  padding: 5%;
-  min-width: 30rem;
+  margin: 5%;
+  min-width: 23rem;
 }
 
 .md-input {
@@ -68,7 +75,6 @@ export default {
   border-bottom-right-radius: 1rem;
   border-top-right-radius: 1rem;
   border-radius: 2rem;
-  min-width: 300px;
   padding-left: 20px !important;
   border-bottom: none;
 }
