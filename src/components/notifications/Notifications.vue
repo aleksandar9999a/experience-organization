@@ -1,5 +1,5 @@
 <template>
-    <md-snackbar md-position="left" :md-duration="duration" :md-active.sync="showSnackbar" md-persistent @show:notification="show">
+    <md-snackbar md-position="left" :md-duration="duration" :md-active.sync="showSnackbar" md-persistent>
       <span>{{messages}}</span>
       <md-button class="md-primary" @click="showSnackbar = false">X</md-button>
     </md-snackbar>
