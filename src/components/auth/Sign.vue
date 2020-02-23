@@ -33,7 +33,7 @@ export default {
 .auth {
   background: linear-gradient(95deg, #f8236aad 40%, #fae842 65%) !important;
   min-height: 1000px;
-  padding-bottom: 15%;
+  padding-bottom: 10%;
   display: inline-flex;
 }
 

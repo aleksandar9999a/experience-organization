@@ -83,16 +83,13 @@ export default {
   border: 2px;
   border-color: red;
   color: red;
-  margin-left: 30px;
+  margin: 0 0 0 15px;
+  padding-bottom: 15px;
 }
 
 .center {
   margin-left: auto;
   margin-right: auto;
-}
-
-.md-field {
-  margin: 20px;
 }
 
 .md-field.md-focused label {
