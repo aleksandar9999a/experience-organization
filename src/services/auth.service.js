@@ -1,5 +1,6 @@
 import { auth, db, storage } from "./../firebase";
-import { router, store } from './../main';
+import { router } from './../router';
+import { store } from './../store';
 
 export async function signIn(email, password) {
     store.commit('showLoader');
