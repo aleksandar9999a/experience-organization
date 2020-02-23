@@ -15,7 +15,7 @@ export function removeNotificationByIndex(i) {
 
 function removeLastNotification() {
     if (listOfNotifications.length > 0) {
-        listOfNotifications.splice(listOfNotifications.length, 1);
+        listOfNotifications.splice(listOfNotifications.length - 1, 1);
     }
 
     checkList();
