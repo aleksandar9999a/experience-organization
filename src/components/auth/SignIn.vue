@@ -34,9 +34,7 @@ export default {
   },
   methods: {
     async auth() {
-      await signIn(this.login.email, this.login.password).finally(() => {
-        
-      });
+       await signIn(this.login.email, this.login.password);
     }
   }
 };
