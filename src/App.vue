@@ -3,18 +3,19 @@
     <Navbar v-if="menuVisible" />
     <router-view></router-view>
     <Notifications></Notifications>
+    <Loader></Loader>
   </div>
 </template>
 
 <script>
 import Navbar from "./components/navbar/Navbar";
 import Notifications from "./components/notifications/Notifications";
+import Loader from './components/loader/Loader';
 import { auth } from './firebase';
-
 
 export default {
   name: "App",
-  components: {Navbar, Notifications},
+  components: {Navbar, Notifications, Loader},
   data: () => {
     return {
       menuVisible: false
@@ -23,10 +24,13 @@ export default {
   methods: {
     setMenuVisible(state) {
       this.menuVisible = state;
+    },
+    showNotification(message){
+      this.$store.commit({type: 'showNotifications', message});
     }
   },
   errorCaptured: function (err) {
-    this.$emit('show:notification', err.message);
+    this.showNotification(err.message);
   },
   created: function() {
     auth.onAuthStateChanged(u => {
