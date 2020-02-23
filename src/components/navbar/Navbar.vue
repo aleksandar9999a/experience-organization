@@ -1,17 +1,16 @@
 <template>
-  <md-toolbar class="md-accent">
-    <img src="./../../assets/logo.png" class="logo" />
-    <router-link class="md-title" to="/">Experience Organizer</router-link>
+  <md-toolbar class="material-blue">
+    <md-button class="logo" to='/'><img src="./../../assets/logo.png" class="logo" /> Experience Organizer</md-button>
     <div v-if="menuVisible" class="center">
-      <md-button class="md-primary" to="/organizer">My Organizer</md-button>
-      <md-button class="md-primary" to="/search">Search</md-button>
-      <md-button class="md-primary" to="/profile">My profile</md-button>
+      <md-button class="md-accent" to="/organizer">My Organizer</md-button>
+      <md-button class="md-accent" to="/search">Search</md-button>
+      <md-button class="md-accent" to="/profile">My profile</md-button>
     </div>
     <div v-else class="right">
-      <md-button class="md-primary" to="/auth">Sign In / Sign Up</md-button>
+      <md-button class="md-accent" to="/auth">Sign In / Sign Up</md-button>
     </div>
     <div v-if="menuVisible" class="right">
-      <md-button class="md-primary" v-on:click="signOut()">Log Out</md-button>
+      <md-button class="md-accent" v-on:click="signOut()">Log Out</md-button>
     </div>
   </md-toolbar>
 </template>
@@ -66,6 +65,16 @@ export default {
 
 .logo {
   width: auto;
-  height: 40px;
+  height: 50px;
+  font-size: 15px;
+  color: white !important;
+}
+
+.material-blue {
+  background-color: rgb(84, 59, 226) !important;
+}
+
+.md-accent {
+  color: white !important;
 }
 </style>
