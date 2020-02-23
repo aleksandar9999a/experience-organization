@@ -36,6 +36,7 @@
 
 <script>
 import { signIn } from "./../../services/auth.service";
+import { addNotification } from "./../../services/notifications";
 import { validationMixin } from "vuelidate";
 import {
   required,
@@ -62,7 +63,7 @@ export default {
       if (!this.$v.$invalid) {
         await signIn(this.email, this.password);
       } else {
-        this.$store.commit({ type: 'showNotifications', message: 'Form is invalid!' })
+        addNotification('Form is invalid!');
       }
     },
     reg() {
