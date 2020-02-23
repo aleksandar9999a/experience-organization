@@ -26,7 +26,8 @@ export const store = new Vuex.Store({
   state: {
     notifications: false,
     notificationMessage: '',
-    loading: false
+    loading: false,
+    regOrLog: true
   },
   mutations: {
     showNotifications(state, payload) {
@@ -42,6 +43,9 @@ export const store = new Vuex.Store({
     },
     hideLoader(state) {
       state.loading = false;
+    },
+    changeRegOrLog(state) {
+      state.regOrLog = !state.regOrLog;
     }
   }
 })
