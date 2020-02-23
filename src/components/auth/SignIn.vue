@@ -1,32 +1,25 @@
 <template>
-  <div class="centered-container">
-    <md-content class="md-elevation-3">
-      <div class="title">
-        <img src="./../../assets/logo.png" />
-        <div class="md-title">Experience Organizer</div>
-        <div class="md-body-1">A beautiful application for easy organization tracking!</div>
-      </div>
+  <div class="left-container">
+    <div class="form">
+      <h2 class="title">SIGN IN</h2>
+      <md-field>
+        <label>E-mail</label>
+        <md-input v-model="login.email" autofocus></md-input>
+      </md-field>
 
-      <div class="form">
-        <md-field>
-          <label>E-mail</label>
-          <md-input v-model="login.email" autofocus></md-input>
-        </md-field>
+      <md-field md-has-password>
+        <label>Password</label>
+        <md-input v-model="login.password" type="password"></md-input>
+      </md-field>
+    </div>
 
-        <md-field md-has-password>
-          <label>Password</label>
-          <md-input v-model="login.password" type="password"></md-input>
-        </md-field>
-      </div>
+    <div class="actions md-layout md-alignment-center">
+      <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
+    </div>
 
-      <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
-      </div>
-
-      <div class="loading-overlay" v-if="loading">
-        <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
-      </div>
-    </md-content>
+    <div class="loading-overlay" v-if="loading">
+      <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
+    </div>
   </div>
 </template>
 
@@ -56,47 +49,50 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.centered-container {
+.title {
+  text-align: center;
+  padding: 20px;
+}
+
+.left-container {
+  display: inline-block;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+  padding: 5%;
+  min-width: 30rem;
+}
+
+.md-input {
+  background-color: white !important;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-radius: 2rem;
+  min-width: 300px;
+  padding-left: 20px !important;
+  border-bottom: none;
+}
+
+.md-field.md-theme-default:after,
+.md-field.md-theme-default:before {
+  background-color: transparent;
+}
+
+label {
+  padding-left: 10px !important;
+}
+
+.loading-overlay {
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  height: 100vh;
-  .title {
-    text-align: center;
-    margin-bottom: 30px;
-    img {
-      margin-bottom: 16px;
-      max-width: 150px;
-    }
-  }
-  .actions {
-    .md-button {
-      margin: 0;
-    }
-  }
-  .form {
-    margin-bottom: 60px;
-  }
-  .md-content {
-    z-index: 1;
-    padding: 5%;
-    width: 35%;
-    height: 55%;
-    position: relative;
-  }
-  .loading-overlay {
-    z-index: 10;
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 </style>
