@@ -1,11 +1,12 @@
 import { auth, db, storage } from "./../firebase";
 import { router } from './../router';
 import { store } from './../store';
+import { addNotification } from './notifications';
 
 export async function signIn(email, password) {
     store.commit('showLoader');
     return await auth.signInWithEmailAndPassword(email, password).then(() => {
-        store.commit({ type: 'showNotifications', message: 'Successfull Log In!' });
+        addNotification('Successfull Log In!');
         router.push('/');
     }).finally(() => {
         store.commit('hideLoader');
@@ -16,7 +17,7 @@ export async function signUp(email, password, firstName, lastName, image, gender
     store.commit('showLoader');
     return await auth.createUserWithEmailAndPassword(email, password).then((d) => {
         updateUserData({ uid: d.user.uid, firstName, lastName, image, gender, age }).then(() => {
-            store.commit({ type: 'showNotifications', message: 'Successfull Registrations!' });
+            addNotification('Successfull Registrations!');
             router.push('/');
         });
     }).finally(() => {
