@@ -11,6 +11,9 @@ import 'vue-material/dist/theme/default.css'
 import VueRouter from 'vue-router'
 import { organizationRoutes } from './router'
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 Vue.use(firestorePlugin)
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
@@ -18,6 +21,31 @@ Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 export const router = new VueRouter(organizationRoutes);
+
+export const store = new Vuex.Store({
+  state: {
+    notifications: false,
+    notificationMessage: '',
+    loading: false
+  },
+  mutations: {
+    showNotifications(state, payload) {
+      state.notifications = true;
+      state.notificationMessage = payload.message;
+      setInterval(() => {
+        state.notifications = false;
+        state.notificationMessage = '';
+      }, 3000);
+    },
+    showLoader(state) {
+      state.loading = true;
+    },
+    hideLoader(state) {
+      state.loading = false;
+    }
+  }
+})
+
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
@@ -30,5 +58,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   router,
-  render: h => h(App),
+  store,
+  render: h => h(App)
 }).$mount('#app')
