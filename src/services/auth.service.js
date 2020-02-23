@@ -3,6 +3,8 @@ import { router } from './../router';
 import { store } from './../store';
 import { addNotification } from './notifications';
 
+const defImg = 'https://firebasestorage.googleapis.com/v0/b/experience-organization.appspot.com/o/profile%2FunkItem.svg?alt=media&token=e1aaca08-d10f-4847-bc5b-1ae66d4768bb';
+
 export async function signIn(email, password) {
     store.commit('showLoader');
     return await auth.signInWithEmailAndPassword(email, password).then(() => {
@@ -13,16 +15,19 @@ export async function signIn(email, password) {
     });
 }
 
-export async function signUp(email, password, firstName, lastName, image, gender, age) {
+export async function signUp(userdata) {
     store.commit('showLoader');
-    return await auth.createUserWithEmailAndPassword(email, password).then((d) => {
-        updateUserData({ uid: d.user.uid, firstName, lastName, image, gender, age }).then(() => {
-            addNotification('Successfull Registrations!');
-            router.push('/');
+    return await auth.createUserWithEmailAndPassword(userdata.email, userdata.password)
+        .then(async (d) => {
+            const data = { uid: d.user.uid, firstName: userdata.firstName, lastName: userdata.lastName, image: defImg, gender: userdata.gender, age: userdata.age };
+            return await updateUserData(data).then(() => {
+                addNotification('Successfull Registrations!');
+                router.push('/');
+            });
+        })
+        .finally(() => {
+            store.commit('hideLoader');
         });
-    }).finally(() => {
-        store.commit('hideLoader');
-    });
 }
 
 export async function updateUserData(userdata) {
