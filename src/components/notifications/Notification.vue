@@ -30,7 +30,7 @@ export default {
   border-top-right-radius: 0.5rem;
   border-radius: 0.2rem;
   min-width: 300px;
-  height: 5%;
+  height: 7%;
   box-shadow: 15px 10px 30px grey;
 }
 
@@ -41,6 +41,7 @@ export default {
 }
 
 .md-button {
+  padding-top: 5%;
   margin-left: auto;
 }
 </style>
