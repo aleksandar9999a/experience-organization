@@ -16,10 +16,6 @@
     <div class="actions md-layout md-alignment-center">
       <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
     </div>
-
-    <div class="loading-overlay" v-if="loading">
-      <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
-    </div>
   </div>
 </template>
 
@@ -30,7 +26,6 @@ export default {
   name: "SignIn",
   data() {
     return {
-      loading: false,
       login: {
         email: "",
         password: ""
@@ -39,9 +34,8 @@ export default {
   },
   methods: {
     async auth() {
-      this.loading = true;
       await signIn(this.login.email, this.login.password).finally(() => {
-        this.loading = false;
+        
       });
     }
   }
@@ -88,17 +82,4 @@ label {
   padding-left: 10px !important;
 }
 
-.loading-overlay {
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 </style>
