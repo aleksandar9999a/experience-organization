@@ -25,7 +25,7 @@
       </div>
 
       <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-primary" @click="auth">Log in</md-button>
+        <md-button class="md-raised md-primary" @click="auth" :disabled="this.$v.$invalid">Log in</md-button>
       </div>
       <div class="actions md-layout md-alignment-center">
         <md-button class="md-raised md-accent" @click="reg">Register</md-button>
