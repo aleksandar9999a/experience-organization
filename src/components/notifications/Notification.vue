@@ -1,8 +1,8 @@
 <template>
-  <div class="notification">
-    <span class="message">{{msg}}</span>
-    <md-button class="md-accent" @click="removeNotification">X</md-button>
-  </div>
+  <md-card class="notification" md-primary md-with-hover>
+    <md-card-header>{{msg}}</md-card-header>
+    <md-button @click="removeNotification">Close</md-button>
+  </md-card>
 </template>
 
 <script>
@@ -23,25 +23,20 @@ export default {
   z-index: 100;
   cursor: pointer;
   position: absolute;
-  display: flex;
-  right: 20px;
-  background-color: rgb(84, 59, 226);
+  display: inline-flex;
+  right: 0;
+  margin-right: 2%;
+  margin-left: 2%;
   border-bottom-right-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   border-radius: 0.2rem;
-  min-width: 300px;
-  height: 7%;
+  min-width: 200px;
   box-shadow: 15px 10px 30px grey;
 }
 
-.message {
-  padding-left: 20px;
-  padding-top: 5%;
-  color: white;
+.md-button{
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
-.md-button {
-  padding-top: 5%;
-  margin-left: auto;
-}
 </style>
