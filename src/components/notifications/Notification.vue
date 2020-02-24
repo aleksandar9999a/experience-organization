@@ -1,5 +1,5 @@
 <template>
-  <md-card class="notification" md-primary md-with-hover>
+  <md-card class="md-primary notification" md-with-hover>
     <md-card-header>{{msg}}</md-card-header>
     <md-button @click="removeNotification">Close</md-button>
   </md-card>
