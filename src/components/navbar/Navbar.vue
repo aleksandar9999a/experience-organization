@@ -2,7 +2,7 @@
   <md-toolbar class="material-blue">
     <md-button class="logo" to='/'><img src="./../../assets/logo.png" class="logo" /> Experience Organizer</md-button>
     <div class="center">
-      <md-button class="md-accent" to="/organizer">My Organizer</md-button>
+      <md-button class="md-accent" to="/">My Organizer</md-button>
       <md-button class="md-accent" to="/search">Search</md-button>
       <md-button class="md-accent" to="/profile">My profile</md-button>
     </div>
