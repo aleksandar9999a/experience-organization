@@ -1,7 +1,8 @@
-import { auth, db, storage } from "./../firebase";
+import { auth } from "./../firebase";
 import { router } from './../router';
 import { store } from './../store';
 import { addNotification } from './notifications';
+import { setUserData } from './firestore.service'
 
 const defImg = 'https://firebasestorage.googleapis.com/v0/b/experience-organization.appspot.com/o/profile%2FunkItem.svg?alt=media&token=e1aaca08-d10f-4847-bc5b-1ae66d4768bb';
 
@@ -20,7 +21,7 @@ export async function signUp(userdata) {
     return await auth.createUserWithEmailAndPassword(userdata.email, userdata.password)
         .then(async (d) => {
             const data = { uid: d.user.uid, firstName: userdata.firstName, lastName: userdata.lastName, image: defImg, gender: userdata.gender, age: userdata.age };
-            return await updateUserData(data).then(() => {
+            return await setUserData(data).then(() => {
                 addNotification('Successfull Registrations!');
                 router.push('/');
             });
@@ -30,24 +31,7 @@ export async function signUp(userdata) {
         });
 }
 
-export async function updateUserData(userdata) {
-    if (typeof userdata.image === 'object') {
-        userdata.image = await uploadImage(userdata.image);
-    }
-    return await db.doc(`users/${userdata.uid}`).set(userdata);
-}
-
 export async function logOut() {
     store.commit('showLoader');
     return await auth.signOut().then(() => { addNotification('Successfull Log Out!'); router.push('/auth'); }).finally(() => { store.commit('hideLoader'); });
-}
-
-async function uploadImage(img) {
-    const id = db.createId();
-    const storageRef = storage.ref(`profileImages/${id}`);
-    return await storageRef.put(img).then(getUrl)
-}
-
-async function getUrl(snapshot) {
-    return await snapshot.ref.getDownloadURL();
 }
