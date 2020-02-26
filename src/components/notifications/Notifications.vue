@@ -11,19 +11,20 @@
 </template>
 
 <script>
-import { listOfNotifications } from "./../../services/notifications";
+import { notifications } from "./../../services/notifications";
 import Notification from "./Notification";
 
 export default {
   name: "Notifications",
   components: { Notification },
+  computed: {
+    list: function() {
+      return notifications.list;
+    }
+  },
   data: () => ({
-    position: "left",
-    list: []
-  }),
-  created: function() {
-    this.list = listOfNotifications;
-  }
+    position: "left"
+  })
 };
 </script>
 
