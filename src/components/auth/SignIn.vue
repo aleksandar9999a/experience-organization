@@ -5,7 +5,7 @@
         <h2 class="title">SIGN IN</h2>
         <md-field>
           <label>E-mail</label>
-          <md-input v-model="email" v-model.trim="$v.email.$model"></md-input>
+          <md-input v-model="email" v-model.trim="$v.email.$model" autofocus></md-input>
         </md-field>
 
         <div v-if="$v.email.$dirty" class="error">
@@ -26,9 +26,6 @@
 
       <div class="actions md-layout md-alignment-center">
         <md-button class="md-raised md-primary" @click="auth" :disabled="this.$v.$invalid">Log in</md-button>
-      </div>
-      <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-accent" @click="reg">Register</md-button>
       </div>
     </div>
   </div>
@@ -65,9 +62,6 @@ export default {
       } else {
         addNotification('Form is invalid!');
       }
-    },
-    reg() {
-      this.$store.commit("changeRegOrLog");
     }
   }
 };
