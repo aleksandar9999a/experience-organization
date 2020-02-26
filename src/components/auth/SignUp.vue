@@ -71,9 +71,6 @@
       <div class="actions md-layout md-alignment-center">
         <md-button class="md-raised md-primary" @click="registered" :disabled="this.$v.$invalid">Registered</md-button>
       </div>
-      <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-accent" @click="log">Log In</md-button>
-      </div>
     </div>
   </div>
 </template>
@@ -127,9 +124,6 @@ export default {
       } else {
         addNotification('Form is invalid!');
       }
-    },
-    log() {
-      this.$store.commit("changeRegOrLog");
     }
   }
 };
