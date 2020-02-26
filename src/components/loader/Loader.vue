@@ -1,15 +1,19 @@
 <template>
-  <div class="loading-overlay" v-if="loading">
+  <div class="loading-overlay" v-if="state">
     <md-progress-spinner md-mode="indeterminate" :md-diameter="100" :md-stroke="2"></md-progress-spinner>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { loaderState } from '../../services/loader'
 
 export default {
   name: "Loader",
-  computed: mapState(["loading"])
+  computed: {
+    state: function() {
+      return loaderState.loader;
+    }
+  }
 };
 </script>
 
