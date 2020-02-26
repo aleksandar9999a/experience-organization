@@ -4,6 +4,10 @@ export async function setUserData(data) {
     return await setData(data, `users/${data.uid}`);
 }
 
+export async function setProject(data) {
+    return await setData(data, `projects/${data.id}`);
+}
+
 export function getUsersCollection() {
     return db.collection('users');
 }
@@ -12,16 +16,16 @@ export function getUser(id) {
     return getUsersCollection().doc(id);
 }
 
-export function getOrganizations() {
-    return db.collection('organizations');
+export function getProjects() {
+    return db.collection('projects');
 }
 
-export function getOrganization(id) {
-    return getOrganizations().doc(id);
+export function getProject(id) {
+    return getProjects().doc(id);
 }
 
-export function getOrganizationsByCreator(id) {
-    return db.collection('organizations', ref => ref.where('creator_id', '==', id));
+export function getProjectsByCreator(id) {
+    return db.collection('projects', ref => ref.where('creator_id', '==', id));
 }
 
 async function setData(data, ref) {
