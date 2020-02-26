@@ -5,8 +5,13 @@
           <Logo></Logo>
         </div>
         <div class="sign md-layout-item md-small-size-100">
-          <SignIn v-if="regOrLog"></SignIn>
+          <SignIn v-if="state"></SignIn>
           <SignUp v-else></SignUp>
+          <div class="center">
+            <p class="md-caption">Do you have an account?</p>
+            <md-button class="md-accent" v-if="state" @click="changeState()">Register</md-button>
+            <md-button class="md-accent" v-else @click="changeState()">Log In</md-button>
+          </div>
         </div>
       </div>
   </div>
@@ -16,7 +21,6 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Logo from "./Logo";
-import { mapState } from 'vuex';
 
 export default {
   name: "Sign",
@@ -25,7 +29,16 @@ export default {
     SignUp,
     Logo
   },
-  computed: mapState(["regOrLog"])
+  data: function() {
+    return {
+      state: true
+    }
+  },
+  methods: {
+    changeState() {
+      this.state = !this.state;
+    }
+  }
 };
 </script>
 
@@ -35,6 +48,17 @@ export default {
   min-height: 1000px;
   padding-bottom: 10%;
   display: inline-flex;
+}
+
+.md-caption{
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.center{
+  text-align: center;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 .container {
