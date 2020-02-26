@@ -4,13 +4,13 @@
       <md-empty-state md-rounded :md-size="size">
         <img src="./../../assets/logo.png" />
         <p class="md-headline">Experience Organizer</p>
-        <p class="md-subheading">Create your organization and track it easy!</p>
+        <p class="md-subheading">Create your project and track it easy!</p>
         <md-button class="md-primary md-raised">Create</md-button>
       </md-empty-state>
     </div>
     <div v-else>
-      <h1 class="md-display-3">List of Organizations</h1>
-      <p class="md-subheading">The list contains all the organizations where you are a member.</p>
+      <h1 class="md-display-3">List of Projects</h1>
+      <p class="md-subheading">The list contains all projects where you are a member.</p>
       <md-list>
         <md-list-item v-for="doc of documents" :key="doc.id" :to="'/organization/' + doc.id">
           <md-avatar>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getOrganizations } from "./../../services/firestore.service";
+import { getProjects } from "./../../services/firestore.service";
 
 export default {
   name: "home",
@@ -38,7 +38,7 @@ export default {
     };
   },
   firestore: {
-    documents: getOrganizations()
+    documents: getProjects()
   }
 };
 </script>
