@@ -5,14 +5,14 @@
         <img src="./../../assets/logo.png" />
         <p class="md-headline">Experience Organizer</p>
         <p class="md-subheading">Create your project and track it easy!</p>
-        <md-button class="md-primary md-raised">Create</md-button>
+        <md-button class="md-primary md-raised" to="/create-project">Create</md-button>
       </md-empty-state>
     </div>
     <div v-else>
       <h1 class="md-display-3">List of Projects</h1>
       <p class="md-subheading">The list contains all projects where you are a member.</p>
       <md-list>
-        <md-list-item v-for="doc of documents" :key="doc.id" :to="'/organization/' + doc.id">
+        <md-list-item v-for="doc of documents" :key="doc.id" :to="'/projects/' + doc.id">
           <md-avatar>
             <img :src="doc.image" :alt="doc.title" />
           </md-avatar>
