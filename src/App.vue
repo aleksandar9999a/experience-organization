@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Navbar v-if="menuVisible" />
     <router-view></router-view>
     <Notifications></Notifications>
@@ -43,12 +43,8 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.app {
+  background: linear-gradient(to top, #2c3868, #fad7e1);
+  min-height: 1000px;
 }
 </style>
