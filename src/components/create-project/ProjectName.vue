@@ -15,7 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .project-name{
-    min-height: 100px;
+    min-height: 70px;
 }
 
 .md-field{
