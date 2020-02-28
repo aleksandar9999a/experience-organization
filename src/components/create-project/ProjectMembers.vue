@@ -86,7 +86,7 @@ label {
 }
 
 .list-of-members {
-  height: 150px;
+  height: 50px;
   display: flex;
 }
 
