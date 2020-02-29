@@ -1,29 +1,38 @@
 <template>
-  <div class="project-form">
-    <ProjectImage></ProjectImage>
-    <ProjectName></ProjectName>
-    <ProjectMembers></ProjectMembers>
-    <ProjectSteps></ProjectSteps>
-    <ProjectProgress></ProjectProgress>
-  </div>
+    <md-steppers>
+      <md-step id="first" md-label="Image">
+        <ProjectImage></ProjectImage>
+      </md-step>
+
+      <md-step id="second" md-label="Title">
+        <ProjectName></ProjectName>
+      </md-step>
+
+      <md-step id="third" md-label="Team">
+        <ProjectMembers></ProjectMembers>
+      </md-step>
+
+      <md-step id="four" md-label="Steps">
+        <ProjectSteps></ProjectSteps>
+      </md-step>
+    </md-steppers>
 </template>
 
 <script>
-import ProjectImage from './ProjectImage';
-import ProjectName from './ProjectName';
-import ProjectMembers from './ProjectMembers';
-import ProjectSteps from './ProjectSteps';
-import ProjectProgress from './ProjectProgress';
+import ProjectImage from "./ProjectImage";
+import ProjectName from "./ProjectName";
+import ProjectMembers from "./ProjectMembers";
+import ProjectSteps from "./ProjectSteps";
 
 export default {
   name: "CreateProject",
-  components: {ProjectImage, ProjectName, ProjectMembers, ProjectSteps, ProjectProgress}
+  components: { ProjectImage, ProjectName, ProjectMembers, ProjectSteps }
 };
 </script>
 
 <style lang="scss" scoped>
-.project-form {
-  min-height: 900px;
-  padding-top: 5%;
+.md-steppers{
+  background: none;
+  margin: 20px;
 }
 </style>
