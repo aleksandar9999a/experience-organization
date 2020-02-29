@@ -19,7 +19,7 @@
         </md-field>
 
         <div v-if="$v.password.$dirty" class="error">
-          <span v-if="!$v.password.required">Email is required!</span>
+          <span v-if="!$v.password.required">Password is required!</span>
           <span v-else-if="!$v.password.minLength || !$v.password.maxLength">Minimum length is 8 chars, max - 20!</span>
         </div>
       </div>
