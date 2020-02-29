@@ -27,7 +27,7 @@
       </md-step>
 
       <div class="add-btn">
-        <md-button class="md-icon-button" @click="addStep">
+        <md-button class="md-icon-button" @click="addNewStep">
           <md-icon>add</md-icon>
         </md-button>
       </div>
@@ -36,32 +36,22 @@
 </template>
 
 <script>
+import { getSteps, addStep } from './../../services/create-project.service';
+
 export default {
   name: "ProjectSteps",
   data: function() {
     return {
-      steps: [
-        {
-          id: "0",
-          name: "Step Name",
-          desc: "",
-          members: [
-            {
-              uid: 1,
-              firstName: "Alex",
-              image:
-                "https://previews.123rf.com/images/rudall30/rudall301506/rudall30150600063/41192424-cool-man-with-beards-and-mustache-wearing-a-sunglasses.jpg"
-            }
-          ]
-        }
-      ]
+      steps: []
     };
   },
   methods: {
-    addStep: function() {
-      const id = this.steps.length.toString();
-      this.steps.push({ id, name: "Step Name", desc: "", members: [] });
+    addNewStep: function() {
+      addStep({ name: "Step Name", desc: "", members: [] });
     }
+  },
+  created: function() {
+    this.steps = getSteps();
   }
 };
 </script>
