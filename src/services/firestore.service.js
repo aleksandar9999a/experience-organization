@@ -16,6 +16,10 @@ export function getUser(id) {
     return getUsersCollection().doc(id);
 }
 
+export function searchUserByName(name) {
+    return getUsersCollection().where('firstName', '>=', name).limit(5);
+}
+
 export function getProjects() {
     return db.collection('projects');
 }
@@ -25,7 +29,7 @@ export function getProject(id) {
 }
 
 export function getProjectsByCreator(id) {
-    return db.collection('projects', ref => ref.where('creator_id', '==', id));
+    return db.collection('projects').where('creator_id', '==', id);
 }
 
 async function setData(data, ref) {
