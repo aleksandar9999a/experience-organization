@@ -1,5 +1,9 @@
 <template>
   <div class="members">
+    <div class="center-members">
+    <div class="center">
+        <h1 class="md-display-1">Choose members of your project</h1>
+      </div>
     <div>
       <md-field>
         <label>Members</label>
@@ -7,7 +11,7 @@
         <md-icon>add</md-icon>
       </md-field>
       <div class="list-of-members">
-        <div class="center">
+        <div class="center-list">
           <md-chip v-for="user of users" :key="user.uid" class="md-primary" md-deletable>
             <md-avatar>
               <img :src="user.image" class="avatar" alt="Avatar">
@@ -16,6 +20,7 @@
           </md-chip>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -34,7 +39,12 @@ export default {
 
 <style lang="scss" scoped>
 .members {
-  min-height: 50px;
+  min-height: 400px;
+  display: flex;
+}
+
+.center-members{
+  margin: auto;
 }
 
 .add-member {
@@ -86,13 +96,17 @@ label {
 }
 
 .list-of-members {
-  height: 50px;
+  height: 100px;
   display: flex;
 }
 
-.center{
+.center-list{
   margin-left: auto;
   margin-right: auto;
+}
+
+.center{
+  text-align: center;
 }
 
 .md-avatar{
