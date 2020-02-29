@@ -6,22 +6,60 @@
       </div>
       <md-field>
         <label>Project Name</label>
-        <md-input></md-input>
+        <md-input v-model="name" v-model.trim="$v.name.$model"></md-input>
       </md-field>
+      <div v-if="$v.name.$dirty" class="error">
+          <span v-if="!$v.name.required">Project Name is required!</span>
+          <span v-else-if="!$v.name.minLength || !$v.name.maxLength">Minimum length is 8 chars, max - 20!</span>
+      </div>
       <div class="center">
         <p class="md-caption">Write it in field.</p>
+      </div>
+      <div class="center">
+        <md-button class="md-raised md-primary" @click="setDone" :disabled="$v.name.$invalid">Continue</md-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { validationMixin } from "vuelidate";
+import {
+  required,
+  minLength,
+  maxLength
+} from "vuelidate/lib/validators";
+import { goToNextStep } from './../../services/create-project.service';
+
+
 export default {
-  name: "ProjectName"
+  name: "ProjectName",
+  mixins: [validationMixin],
+  data: function() {
+    return {
+      name: ''
+    }
+  },
+  validations: {
+    name: { required, minLength: minLength(4), maxLength: maxLength(20)}
+  },
+  methods: {
+    setDone() {
+      goToNextStep('second', 'third');
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.error {
+  border: 2px;
+  border-color: red;
+  color: red;
+  margin: 0 0 0 15px;
+  padding-bottom: 15px;
+}
+
 .project-name {
   height: 400px;
   display: flex;
