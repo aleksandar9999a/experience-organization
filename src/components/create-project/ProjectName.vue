@@ -1,10 +1,18 @@
 <template>
   <div class="project-name">
-        <md-field>
-          <label>Project Name</label>
-          <md-input></md-input>
-        </md-field>
+    <div class="project">
+      <div class="center">
+        <h1 class="md-display-1">Choose Project Name</h1>
+      </div>
+      <md-field>
+        <label>Project Name</label>
+        <md-input></md-input>
+      </md-field>
+      <div class="center">
+        <p class="md-caption">Write it in field.</p>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -14,15 +22,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.project-name{
-    min-height: 70px;
+.project-name {
+  height: 400px;
+  display: flex;
 }
 
-.md-field{
-  margin-top: 5%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
+.project{
+  margin: auto;
 }
 
 .md-field.md-focused label {
@@ -39,7 +45,7 @@ label {
   font-size: 15px;
   display: block;
   width: 100%;
-  white-space:nowrap;
+  white-space: nowrap;
   text-align: center;
 }
 
@@ -55,6 +61,10 @@ label {
   border-radius: 2rem;
   padding-left: 20px !important;
   border-bottom: none;
-  min-width: 23rem;
+  min-width: 10rem;
+}
+
+.center {
+  text-align: center;
 }
 </style>

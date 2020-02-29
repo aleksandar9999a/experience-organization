@@ -1,6 +1,12 @@
 <template>
-  <div class="project-img">
-    <img class="project-profile" :src="img" />
+  <div>
+    <div class="project-img">
+      <img class="project-profile" :src="img" />
+    </div>
+    <div class="center">
+      <h1 class="md-display-1">Choose Project Image</h1>
+      <p class="md-caption">Click on image to select other one.</p>
+    </div>
   </div>
 </template>
 
@@ -18,6 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 .project-img {
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: 150px;
   display: flex;
 }
@@ -38,7 +46,11 @@ export default {
   margin-right: auto;
 }
 
-.project-profile:hover{
-    opacity: 70%;
+.project-profile:hover {
+  opacity: 70%;
+}
+
+.center {
+  text-align: center;
 }
 </style>
