@@ -3,17 +3,35 @@
     <div class="title">
       <h1 class="md-display-1">Add Steps</h1>
     </div>
-    <div class="generated-steps">
-      <div v-for="step of steps" :key="step.id" class="circle">
-         <md-field>
+    <md-steppers md-vertical>
+      <md-step v-for="step of steps" :key="step.id" :id="step.id" :md-label="step.name">
+        <md-field>
           <label>Step Name</label>
-          <md-input></md-input>
+          <md-input v-model="step.name">{{step.name}}</md-input>
         </md-field>
+        <md-field>
+          <label>Step Description</label>
+          <md-textarea v-model="step.desc" md-autogrow>{{step.desc}}</md-textarea>
+        </md-field>
+        <md-field>
+          <label>Members</label>
+          <md-input></md-input>
+          <md-icon>add</md-icon>
+        </md-field>
+        <md-chip v-for="user of step.members" :key="user.uid" class="md-primary" md-deletable>
+          <md-avatar>
+            <img :src="user.image" class="avatar" alt="Avatar" />
+          </md-avatar>
+          {{user.firstName}}
+        </md-chip>
+      </md-step>
+
+      <div class="add-btn">
+        <md-button class="md-icon-button" @click="addStep">
+          <md-icon>add</md-icon>
+        </md-button>
       </div>
-    </div>
-    <div @click="addStep()" class="circle">
-      <md-icon>add</md-icon>
-    </div>
+    </md-steppers>
   </div>
 </template>
 
@@ -22,13 +40,27 @@ export default {
   name: "ProjectSteps",
   data: function() {
     return {
-      steps: [{step_name: 'Create Form', id: "1"}]
-    }
+      steps: [
+        {
+          id: "0",
+          name: "Step Name",
+          desc: "",
+          members: [
+            {
+              uid: 1,
+              firstName: "Alex",
+              image:
+                "https://previews.123rf.com/images/rudall30/rudall301506/rudall30150600063/41192424-cool-man-with-beards-and-mustache-wearing-a-sunglasses.jpg"
+            }
+          ]
+        }
+      ]
+    };
   },
   methods: {
     addStep: function() {
-      const id = this.steps[this.steps.length-1].id + 1;
-      this.steps.push({step_name: '', id});
+      const id = this.steps.length.toString();
+      this.steps.push({ id, name: "Step Name", desc: "", members: [] });
     }
   }
 };
@@ -36,65 +68,31 @@ export default {
 
 <style lang="scss" scoped>
 .steps {
-  min-height: 500px;
+  min-height: 600px;
 }
 
-.generated-steps{
-  margin: 40px;
-}
-
-.title{
+.title {
   text-align: center;
 }
 
-.circle {
-  height: 300px;
-  width: 300px;
-  background-color: rgb(255, 194, 52);
-  box-shadow: 3px 7px 5px #0000003d;
-  border-radius: 50%;
+.md-steppers {
+  margin: 7%;
+}
+
+.md-avatar {
+  height: 20px;
+}
+
+.avatar {
+  width: 20px;
+}
+
+.add-btn {
   display: flex;
+}
+
+.md-button {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
 }
-
-.md-field{
-  margin: auto;
-  width: 250px;
-}
-
-.md-field.md-focused label {
-  font-size: 17px;
-  top: -7px;
-}
-
-.md-field.md-has-value label {
-  font-size: 19px;
-  top: -8px;
-}
-
-label {
-  font-size: 15px;
-  display: block;
-  width: 100%;
-  white-space:nowrap;
-  text-align: center;
-}
-
-.md-field.md-theme-default:after,
-.md-field.md-theme-default:before {
-  background-color: transparent;
-}
-
-.md-input {
-  background-color: white !important;
-  border-bottom-right-radius: 1rem;
-  border-top-right-radius: 1rem;
-  border-radius: 2rem;
-  padding-left: 20px !important;
-  border-bottom: none;
-  min-width: 7rem;
-}
-
 </style>
