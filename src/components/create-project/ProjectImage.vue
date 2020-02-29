@@ -9,13 +9,13 @@
     <div class="center">
       <h1 class="md-display-1">Choose Project Image</h1>
       <p class="md-caption">Click on field to select other image.</p>
-      <md-button class="md-raised md-primary">Continue</md-button>
+      <md-button class="md-raised md-primary" @click="setDone">Continue</md-button>
     </div>
   </div>
 </template>
 
 <script>
-import { addImage } from './../../services/create-project.service';
+import { addImage, goToNextStep } from './../../services/create-project.service';
 
 export default {
   name: "ProjectImage",
@@ -36,6 +36,9 @@ export default {
           this.imagePreview = reader.result;
         };
       }
+    },
+    setDone() {
+      goToNextStep('first', 'second');
     }
   }
 };
