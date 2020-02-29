@@ -8,17 +8,22 @@
       <md-field>
         <label>Members</label>
         <md-input></md-input>
-        <md-icon>add</md-icon>
+        <md-button class="md-icon-button">
+          <md-icon>add</md-icon>
+        </md-button>
       </md-field>
       <div class="list-of-members">
         <div class="center-list">
           <md-chip v-for="user of users" :key="user.uid" class="md-primary" md-deletable>
             <md-avatar>
-              <img :src="user.image" class="avatar" alt="Avatar">
+              <img :src="user.image" class="avatar">
             </md-avatar>
             {{user.firstName}}
           </md-chip>
         </div>
+      </div>
+      <div class="center">
+        <md-button class="md-raised md-primary" @click="setDone">Continue</md-button>
       </div>
     </div>
     </div>
@@ -26,13 +31,22 @@
 </template>
 
 <script>
+import { goToNextStep, getTeam } from './../../services/create-project.service';
+
 export default {
   name: "ProjectMembers",
   data: function() {
     return {
-      img: "https://firebasestorage.googleapis.com/v0/b/experience-organization.appspot.com/o/profile%2FunkItem.svg?alt=media&token=e1aaca08-d10f-4847-bc5b-1ae66d4768bb",
-      users: [{ firstName: 'Alex', lastName: 'Todorov', image: 'https://firebasestorage.googleapis.com/v0/b/experience-organization.appspot.com/o/profile%2FunkItem.svg?alt=media&token=e1aaca08-d10f-4847-bc5b-1ae66d4768bb', uid: '2'}]
+      users: []
     };
+  },
+   methods: {
+    setDone() {
+      goToNextStep('third', 'four');
+    }
+  },
+  created: function() {
+    return this.users = getTeam();
   }
 };
 </script>
@@ -89,10 +103,7 @@ label {
   border-radius: 2rem;
   padding-left: 20px !important;
   border-bottom: none;
-}
-
-.md-icon {
-  right: 30px;
+  height: 37px;
 }
 
 .list-of-members {
