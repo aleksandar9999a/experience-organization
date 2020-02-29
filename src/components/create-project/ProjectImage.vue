@@ -1,28 +1,51 @@
 <template>
   <div>
     <div class="project-img">
-      <img class="project-profile" :src="img" />
+      <label class="custom-file-upload">
+        <img class="project-profile" :src="imagePreview" />
+        <input type="file" @change="handleImage($event)" />
+      </label>
     </div>
     <div class="center">
       <h1 class="md-display-1">Choose Project Image</h1>
-      <p class="md-caption">Click on image to select other one.</p>
+      <p class="md-caption">Click on field to select other image.</p>
+      <md-button class="md-raised md-primary">Continue</md-button>
     </div>
   </div>
 </template>
 
 <script>
+import { addImage } from './../../services/create-project.service';
+
 export default {
   name: "ProjectImage",
   data: function() {
     return {
-      img:
+      imagePreview:
         "https://firebasestorage.googleapis.com/v0/b/experience-organization.appspot.com/o/profile%2FunkItem.svg?alt=media&token=e1aaca08-d10f-4847-bc5b-1ae66d4768bb"
     };
+  },
+  methods: {
+    handleImage(e) {
+      if (e.target.files[0]) {
+        addImage(e.target.files[0]);
+        
+        const reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = () => {
+          this.imagePreview = reader.result;
+        };
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+input[type="file"] {
+  display: none;
+}
+
 .project-img {
   margin-top: 50px;
   margin-bottom: 50px;
