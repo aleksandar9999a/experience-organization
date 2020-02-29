@@ -10,8 +10,8 @@ const organizationRoutes = {
     routes: [
         { path: '/', component: Home, meta: { requiresAuth: true } },
         { path: '/auth', component: Sign },
-        { path: '/create-project/:id', component: CreateProject },
-        { path: '/create-project', component: CreateProject }
+        { path: '/create-project/:id', component: CreateProject, meta: { requiresAuth: true } },
+        { path: '/create-project', component: CreateProject, meta: { requiresAuth: true } }
     ],
     mode: 'history'
 }
