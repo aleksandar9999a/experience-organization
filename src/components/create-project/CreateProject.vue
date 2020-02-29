@@ -1,5 +1,5 @@
 <template>
-    <md-steppers>
+    <md-steppers md-alternative>
       <md-step id="first" md-label="Image">
         <ProjectImage></ProjectImage>
       </md-step>
