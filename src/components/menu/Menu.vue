@@ -2,7 +2,7 @@
   <md-list class="menu">
     <ProfileInformation />
 
-    <md-list-item v-if="!edit" class="create">
+    <md-list-item class="create">
       <md-button class="md-raised md-accent">Create Project</md-button>
     </md-list-item>
 
@@ -35,14 +35,6 @@ import ProfileInformation from "./ProfileInformation";
 export default {
   name: "Menu",
   components: { ProfileInformation },
-  data: function() {
-    return {
-      user: null,
-      edit: false,
-      firstName: null,
-      lastName: null
-    };
-  },
   methods: {
     signOut() {
       logOut();
