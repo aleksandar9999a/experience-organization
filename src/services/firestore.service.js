@@ -16,7 +16,7 @@ export function getUser(id) {
     return getUsersCollection().doc(id);
 }
 
-export function getMyData() {
+export function getMyProfile() {
     if (auth.currentUser) {
         const uid = auth.currentUser.uid;
         return getUsersCollection().doc(uid);
@@ -48,12 +48,38 @@ async function setData(data, ref) {
     return await firestore.doc(ref).set(data);
 }
 
-async function uploadImage(img) {
-    const id = firestore.createId();
+function updateOneFieldFromProfile(field, data){
+    return getMyProfile().update({ [field]: data});
+}
+
+export async function updateProfileImage(image){
+    let url;
+    if(typeof image === 'object') {
+        url = await uploadImage(image);
+    } else {
+        url = image;
+    }
+
+    return await updateOneFieldFromProfile('image', url);
+}
+
+export async function updateNames(first, last){
+    updateOneFieldFromProfile('firstName', first);
+    updateOneFieldFromProfile('lastName', last);
+}
+
+async function uploadImage(img, id) {
+    if(!id){
+        id = createID();
+    }
     const storageRef = storage.ref(id);
     return await storageRef.put(img).then(getUrl);
 }
 
 async function getUrl(snapshot) {
     return await snapshot.ref.getDownloadURL();
+}
+
+function createID() {
+    return '_' + Math.random().toString(36).substr(2, 9);
 }
