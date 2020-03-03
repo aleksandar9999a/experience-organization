@@ -23,6 +23,7 @@
             </md-field>
             <div class="edit-form-btn">
                 <md-button type="submit" class="md-raised md-accent">Edit</md-button>
+                <md-button class="md-raised md-accent" @click="changeForm">Back</md-button>
             </div>
           </form>
         </div>
