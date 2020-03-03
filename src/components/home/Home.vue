@@ -5,21 +5,19 @@
         <img src="./../../assets/logo.png" />
         <p class="md-headline">Experience Organizer</p>
         <p class="md-subheading">Create your project and track it easy!</p>
-        <md-button class="md-primary md-raised" to="/create-project">Create</md-button>
+        <md-button class="md-primary md-raised" @click="showDialog">Create</md-button>
       </md-empty-state>
     </div>
     <div v-else>
       <h1 class="md-display-3">List of Projects</h1>
       <p class="md-subheading">The list contains all projects where you are a member.</p>
       <md-list>
-        <md-list-item v-for="doc of documents" :key="doc.id" :to="'/projects/' + doc.id">
+        <md-list-item v-for="doc of documents" :key="doc.id">
           <md-avatar>
             <img :src="doc.image" :alt="doc.title" />
           </md-avatar>
           <span class="md-list-item-text">{{doc.title}}</span>
-          <md-button class="md-button md-list-action">
-            Open
-          </md-button>
+          <md-button class="md-button md-list-action">Open</md-button>
         </md-list-item>
       </md-list>
     </div>
@@ -28,6 +26,7 @@
 
 <script>
 import { getProjects } from "./../../services/firestore.service";
+import { changeShowDialog } from "./../../services/project-dialog.service";
 
 export default {
   name: "home",
@@ -37,6 +36,11 @@ export default {
       documents: []
     };
   },
+  methods: {
+    showDialog() {
+      changeShowDialog();
+    }
+  },
   firestore: {
     documents: getProjects()
   }
@@ -44,12 +48,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.md-display-3{
+.md-display-3 {
   text-align: center;
   margin-top: 8%;
 }
 
-.md-subheading{
+.md-subheading {
   text-align: center;
 }
 

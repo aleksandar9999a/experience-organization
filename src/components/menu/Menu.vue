@@ -2,7 +2,7 @@
   <md-list class="menu">
     <ProfileInformation />
 
-    <md-list-item class="create">
+    <md-list-item class="create" @click="openDialog">
       <md-button class="md-raised md-accent">Create Project</md-button>
     </md-list-item>
 
@@ -30,6 +30,7 @@
 
 <script>
 import { logOut } from "./../../services/auth.service";
+import { changeShowDialog } from "./../../services/project-dialog.service";
 import ProfileInformation from "./ProfileInformation";
 
 export default {
@@ -38,6 +39,9 @@ export default {
   methods: {
     signOut() {
       logOut();
+    },
+    openDialog() {
+      changeShowDialog();
     }
   }
 };
@@ -49,8 +53,8 @@ export default {
   background: linear-gradient(to top, #626772, #3f89ff);
 }
 
-.md-list-item-text{
-    color: black;
+.md-list-item-text {
+  color: black;
 }
 
 .create {
