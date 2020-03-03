@@ -14,6 +14,7 @@
       </md-app-drawer>
       <md-app-content>
         <router-view></router-view>
+        <ProjectDialog></ProjectDialog>
         <Notifications></Notifications>
         <Loader></Loader>
       </md-app-content>
@@ -27,10 +28,11 @@ import Notifications from "./components/notifications/Notifications";
 import Loader from "./components/loader/Loader";
 import { auth } from "./firebase";
 import { addNotification } from "./services/notifications";
+import ProjectDialog from './components/project-dialog/ProjectDialog';
 
 export default {
   name: "App",
-  components: { Menu, Notifications, Loader },
+  components: { Menu, Notifications, Loader, ProjectDialog },
   data: () => {
     return {
       menuVisible: false,
