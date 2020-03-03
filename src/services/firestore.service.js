@@ -48,13 +48,13 @@ async function setData(data, ref) {
     return await firestore.doc(ref).set(data);
 }
 
-function updateOneFieldFromProfile(field, data){
-    return getMyProfile().update({ [field]: data});
+function updateOneFieldFromProfile(field, data) {
+    return getMyProfile().update({ [field]: data });
 }
 
-export async function updateProfileImage(image){
+export async function updateProfileImage(image) {
     let url;
-    if(typeof image === 'object') {
+    if (typeof image === 'object') {
         url = await uploadImage(image);
     } else {
         url = image;
@@ -63,13 +63,18 @@ export async function updateProfileImage(image){
     return await updateOneFieldFromProfile('image', url);
 }
 
-export async function updateNames(first, last){
+export async function updateNames(first, last) {
     updateOneFieldFromProfile('firstName', first);
     updateOneFieldFromProfile('lastName', last);
 }
 
+export async function createProject(project) {
+    project.id = createID();
+    return await getProjects().doc(project.id).set(project);
+}
+
 async function uploadImage(img, id) {
-    if(!id){
+    if (!id) {
         id = createID();
     }
     const storageRef = storage.ref(id);
