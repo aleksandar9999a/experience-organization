@@ -1,4 +1,4 @@
-import { db, storage } from "./../firebase";
+import { auth, firestore, storage } from "./../firebase";
 
 export async function setUserData(data) {
     return await setData(data, `users/${data.uid}`);
@@ -9,11 +9,19 @@ export async function setProject(data) {
 }
 
 export function getUsersCollection() {
-    return db.collection('users');
+    return firestore.collection('users');
 }
 
 export function getUser(id) {
     return getUsersCollection().doc(id);
+}
+
+export function getMyData() {
+    if (auth.currentUser) {
+        const uid = auth.currentUser.uid;
+        return getUsersCollection().doc(uid);
+    }
+    return null;
 }
 
 export function searchUserByName(name) {
@@ -21,7 +29,7 @@ export function searchUserByName(name) {
 }
 
 export function getProjects() {
-    return db.collection('projects');
+    return firestore.collection('projects');
 }
 
 export function getProject(id) {
@@ -29,7 +37,7 @@ export function getProject(id) {
 }
 
 export function getProjectsByCreator(id) {
-    return db.collection('projects').where('creator_id', '==', id);
+    return firestore.collection('projects').where('creator_id', '==', id);
 }
 
 async function setData(data, ref) {
@@ -37,11 +45,11 @@ async function setData(data, ref) {
         data.image = await uploadImage(data.image);
     }
 
-    return await db.doc(ref).set(data);
+    return await firestore.doc(ref).set(data);
 }
 
 async function uploadImage(img) {
-    const id = db.createId();
+    const id = firestore.createId();
     const storageRef = storage.ref(id);
     return await storageRef.put(img).then(getUrl);
 }
