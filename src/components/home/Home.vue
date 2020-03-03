@@ -48,6 +48,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home{
+  height: inherit;
+}
+
 .md-display-3 {
   text-align: center;
   margin-top: 8%;
@@ -59,7 +63,7 @@ export default {
 
 .empty {
   display: flex;
-  min-height: 600px;
+  height: inherit;
 }
 
 .md-empty-state {
