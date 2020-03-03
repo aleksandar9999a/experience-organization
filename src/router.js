@@ -3,15 +3,12 @@ import VueRouter from 'vue-router'
 import Home from './components/home/Home'
 import Sign from './components/auth/Sign'
 import { auth } from './firebase'
-import CreateProject from './components/create-project/CreateProject'
 Vue.use(VueRouter)
 
 const organizationRoutes = {
     routes: [
         { path: '/', component: Home, meta: { requiresAuth: true } },
-        { path: '/auth', component: Sign },
-        { path: '/create-project/:id', component: CreateProject, meta: { requiresAuth: true } },
-        { path: '/create-project', component: CreateProject, meta: { requiresAuth: true } }
+        { path: '/auth', component: Sign }
     ],
     mode: 'history'
 }
