@@ -9,6 +9,10 @@
       </div>
     </md-list-item>
 
+    <md-list-item class="create">
+      <md-button class="md-raised md-accent">Create Project</md-button>
+    </md-list-item>
+
     <md-list-item to="/home">
       <md-icon>dashboard</md-icon>
       <span class="md-list-item-text">Dashboard</span>
@@ -61,7 +65,6 @@ export default {
 
 .profile {
   display: flex;
-  margin-bottom: 50px;
 }
 
 .info{
@@ -75,5 +78,14 @@ export default {
 
 .md-subheading{
     text-align: center;
+}
+
+.create{
+    margin-bottom: 40px;
+}
+
+.md-button{
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
