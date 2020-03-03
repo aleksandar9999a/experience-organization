@@ -1,7 +1,7 @@
 <template>
-  <div class="auth md-layout">
-    <div class="container md-layout">
-        <div class="logo md-layout-item md-small-size-100">
+  <div class="auth">
+    <div class="md-layout">
+        <div class="big-logo md-layout-item md-small-size-100">
           <Logo></Logo>
         </div>
         <div class="sign md-layout-item md-small-size-100">
@@ -61,12 +61,7 @@ export default {
   margin-top: auto;
 }
 
-.container {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.logo {
+.big-logo {
   width: 50%;
   margin-top: auto;
   margin-bottom: auto;
