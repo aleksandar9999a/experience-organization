@@ -6,56 +6,60 @@ const dialog = Vue.observable({
     showDialog: false,
     name: '',
     description: '',
+    start: null,
+    end: null,
     members: [],
-    steps: [{id: '1', name: 'Write name!', description: 'Write description!'}]
+    steps: [{ id: '1', name: 'Write name!', description: 'Write description!', start: null, end: null }]
 });
 
-export function getShowDialog(){
+export function getShowDialog() {
     return dialog.showDialog;
 }
 
-export function getName(){
+export function getName() {
     return dialog.name;
 }
 
-export function setName(newName){
+export function setName(newName) {
     return dialog.name = newName;
 }
 
-export function getDesc(){
+export function getDesc() {
     return dialog.description;
 }
 
-export function setDesc(desc){
+export function setDesc(desc) {
     return dialog.description = desc;
 }
 
-export function getMembers(){
+export function getMembers() {
     return dialog.members;
 }
 
-export function getSteps(){
+export function getSteps() {
     return dialog.steps;
 }
 
-export function addEmptyStep(){
+export function addEmptyStep() {
     const id = dialog.steps.length + 1;
     return dialog.steps.push({
         id: id.toString(),
         name: 'Write name!',
-        description: 'Write description'
+        description: 'Write description',
+        start: null,
+        end: null
     })
 }
 
-export function removeMember(index){
+export function removeMember(index) {
     return dialog.members.splice(index, 1);
 }
 
-export function changeShowDialog(){
+export function changeShowDialog() {
     return dialog.showDialog = !dialog.showDialog;
 }
 
-function checkDataIsValid(){
+function checkDataIsValid() {
     if (dialog.name.length < 4 || dialog.name.length > 30) {
 
         addNotification('Project name must be between 4 and 30 chars.');
@@ -83,11 +87,11 @@ function checkDataIsValid(){
 }
 
 function checkStep(step) {
-    if(step.name.length < 4 || step.name.length > 30){
+    if (step.name.length < 4 || step.name.length > 30) {
         addNotification(`${step.id} is with invalid name! Must be between 4 and 30 chars.`);
         return false;
     }
-    if(step.description.length < 4 || step.description.length > 300){
+    if (step.description.length < 4 || step.description.length > 300) {
         addNotification(`${step.id} is with invalid description! Must be between 4 and 300 chars.`);
         return false;
     }
@@ -95,17 +99,27 @@ function checkStep(step) {
     return true;
 }
 
-export function submitProject(){
-    if(checkDataIsValid()){
+export function submitProject() {
+    if (checkDataIsValid()) {
         const project = {
             name: dialog.name,
             description: dialog.description,
             members: dialog.members,
             steps: dialog.steps,
+            start: dialog.start,
+            end: dialog.end,
             status: 'Active'
         };
         addNotification('Time to create a new project!');
         return createProject(project);
     }
     return null;
+}
+
+export function setStartDate(date) {
+    return dialog.start = date;
+}
+
+export function setEndDate(date) {
+    return dialog.end = date;
 }
