@@ -9,6 +9,18 @@
         <label>Step Description</label>
         <md-textarea v-model="step.description" required></md-textarea>
       </md-field>
+      <div class="date">
+        <div class="block">
+          <md-datepicker v-model="step.start">
+            <label>Start Date</label>
+          </md-datepicker>
+        </div>
+        <div class="block">
+          <md-datepicker v-model="step.end">
+            <label>End Date</label>
+          </md-datepicker>
+        </div>
+      </div>
     </md-step>
     <div class="icon">
       <md-button class="md-icon-button md-primary" @click="addStep">
@@ -54,7 +66,15 @@ export default {
   margin-right: auto;
 }
 
-.md-field{
+.md-field {
   width: 80%;
+}
+
+.date {
+  display: flex;
+}
+
+.block + .block {
+  padding-left: 50px;
 }
 </style>
