@@ -13,11 +13,10 @@
       <p class="md-subheading">The list contains all projects where you are a member.</p>
       <md-list>
         <md-list-item v-for="doc of documents" :key="doc.id">
-          <md-avatar>
-            <img :src="doc.image" :alt="doc.title" />
-          </md-avatar>
-          <span class="md-list-item-text">{{doc.title}}</span>
-          <md-button class="md-button md-list-action">Open</md-button>
+          <div class="color">
+          </div>
+          <span class="md-list-item-text">{{doc.name}}</span>
+          <md-button class="md-button md-list-action">{{doc.status}}</md-button>
         </md-list-item>
       </md-list>
     </div>
@@ -48,6 +47,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.color{
+  width: 10px;
+  background-color: green;
+}
+
 .home{
   height: inherit;
 }
