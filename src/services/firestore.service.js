@@ -69,8 +69,12 @@ export async function updateNames(first, last) {
 }
 
 export async function createProject(project) {
-    project.id = createID();
-    return await getProjects().doc(project.id).set(project);
+    if (auth.currentUser) {
+        project.id = createID();
+        project.creator = auth.currentUser.uid;
+        return await getProjects().doc(project.id).set(project);    
+    }
+    return null;
 }
 
 async function uploadImage(img, id) {
