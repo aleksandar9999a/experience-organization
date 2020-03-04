@@ -8,6 +8,9 @@
         <md-button class="logo" to="/">
           <img src="./assets/logo.png" class="logo" /> Experience Organizer
         </md-button>
+        <md-button class="md-icon-button" @click="signOut">
+          <md-icon>exit_to_app</md-icon>
+        </md-button>
       </md-app-toolbar>
       <md-app-drawer :md-active.sync="isVisible" v-if="menuVisible">
         <Menu />
@@ -29,6 +32,7 @@ import Loader from "./components/loader/Loader";
 import { auth } from "./firebase";
 import { addNotification } from "./services/notifications";
 import ProjectDialog from './components/project-dialog/ProjectDialog';
+import { logOut } from "./services/auth.service";
 
 export default {
   name: "App",
@@ -45,7 +49,10 @@ export default {
     },
     changeMenuState() {
       this.isVisible = !this.isVisible;
-    }
+    },
+    signOut() {
+      logOut();
+    },
   },
   errorCaptured: function(err) {
     addNotification(err.message);
