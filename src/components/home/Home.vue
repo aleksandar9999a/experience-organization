@@ -11,12 +11,24 @@
     <div v-else>
       <h1 class="md-display-3">List of Projects</h1>
       <p class="md-subheading">The list contains all projects where you are a member.</p>
-      <md-list>
+      <md-list class="md-double-line">
         <md-list-item v-for="doc of documents" :key="doc.id">
-          <div class="color">
+          <div>
+            <span class="md-list-item-text">Project Name</span>
+            <span class="md-list-item-text">{{doc.name}}</span>
           </div>
-          <span class="md-list-item-text">{{doc.name}}</span>
-          <md-button class="md-button md-list-action">{{doc.status}}</md-button>
+          <div>
+            <span class="md-list-item-text">Start Time</span>
+            <span class="md-list-item-text">{{doc.start}}</span>
+          </div>
+          <div>
+            <span class="md-list-item-text">End Time</span>
+            <span class="md-list-item-text">{{doc.end}}</span>
+          </div>
+          <div>
+            <span class="md-list-item-text">Status</span>
+            <span class="md-list-item-text">{{doc.status}}</span>
+          </div>
         </md-list-item>
       </md-list>
     </div>
