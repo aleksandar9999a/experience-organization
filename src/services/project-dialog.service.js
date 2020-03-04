@@ -99,6 +99,10 @@ function checkStep(step) {
     return true;
 }
 
+function generateDate(timestamp) {
+    return `${timestamp.getDate()}/${timestamp.getMonth() + 1}/${timestamp.getFullYear()}`;
+}
+
 export function submitProject() {
     if (checkDataIsValid()) {
         const project = {
@@ -117,9 +121,9 @@ export function submitProject() {
 }
 
 export function setStartDate(date) {
-    return dialog.start = date;
+    return dialog.start = generateDate(date);
 }
 
 export function setEndDate(date) {
-    return dialog.end = date;
+    return dialog.end = generateDate(date);
 }
