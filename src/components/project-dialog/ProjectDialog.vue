@@ -42,7 +42,6 @@ export default {
     },
     createProject(){
         submitProject();
-        this.changeState();
     }
   },
   computed: {
@@ -57,6 +56,7 @@ export default {
 .md-dialog {
   display: inline-block;
   max-width: 768px;
+  overflow: auto;
   z-index: 9;
 }
 
