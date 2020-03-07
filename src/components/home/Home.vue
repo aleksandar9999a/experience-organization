@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getProjects } from "./../../services/firestore.service";
+import { getProjectsWhereIAmMember } from "./../../services/firestore.service";
 import { changeShowDialog } from "./../../services/project-dialog.service";
 import List from "./../list/List";
 
@@ -36,7 +36,7 @@ export default {
     }
   },
   created: function() {
-    this.$bind("documents", getProjects());
+    this.$bind("documents", getProjectsWhereIAmMember());
   }
 };
 </script>
