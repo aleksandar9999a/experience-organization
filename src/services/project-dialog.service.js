@@ -105,10 +105,11 @@ function generateDate(timestamp) {
 
 export function submitProject() {
     if (checkDataIsValid()) {
+        const members = dialog.members.map(user => user.uid);
         const project = {
             name: dialog.name,
             description: dialog.description,
-            members: dialog.members,
+            members,
             steps: dialog.steps,
             start: dialog.start,
             end: dialog.end,
