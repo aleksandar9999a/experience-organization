@@ -1,11 +1,21 @@
 <template>
   <div class="search">
+    <div class="search-field">
+      <h1 class="md-display-3">Search</h1>
+      <md-field>
+        <label>Do you search some project?</label>
+        <md-input v-model="name"></md-input>
+      </md-field>
+      <div class="search-submit-btn">
+        <md-button class="md-raised md-primary" @click="search">Search</md-button>
+      </div>
+    </div>
     <List :documents="documents" />
   </div>
 </template>
 
 <script>
-import { getProjects } from "./../../services/firestore.service";
+import { getProjectsByName } from "./../../services/firestore.service";
 import List from "./../list/List";
 
 export default {
@@ -13,12 +23,14 @@ export default {
   components: { List },
   data: function() {
     return {
-      size: 520,
+      name: '',
       documents: []
     };
   },
-  created: function() {
-    this.$bind("documents", getProjects());
+  methods: {
+    search: function(){
+      this.$bind("documents", getProjectsByName(this.name));
+    }
   }
 };
 </script>
@@ -26,6 +38,19 @@ export default {
 <style lang="scss" scoped>
 .search {
   height: inherit;
+}
+
+.search-field {
+  width: 50%;
+  margin: auto;
+}
+
+.search-submit-btn{
+  display: flex;
+}
+
+.md-button {
+  margin: auto;
 }
 
 .md-display-3 {
@@ -36,5 +61,4 @@ export default {
 .md-subheading {
   text-align: center;
 }
-
 </style>
