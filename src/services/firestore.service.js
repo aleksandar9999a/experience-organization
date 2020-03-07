@@ -37,7 +37,15 @@ export function getProject(id) {
 }
 
 export function getProjectsByCreator(id) {
-    return firestore.collection('projects').where('creator_id', '==', id);
+    return firestore.collection('projects').where('creator', '==', id);
+}
+
+export function getMyProjects() {
+    if (auth.currentUser) {
+        const uid = auth.currentUser.uid;
+        return getProjectsByCreator(uid);
+    }
+    return null;
 }
 
 async function setData(data, ref) {
