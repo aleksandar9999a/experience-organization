@@ -52,6 +52,14 @@ export function getMyProjects() {
     return null;
 }
 
+export function getProjectsWhereIAmMember() {
+    if (auth.currentUser) {
+        const uid = auth.currentUser.uid;
+        return getProjects().where('members', 'array-contains', uid);
+    }
+    return null;
+}
+
 async function setData(data, ref) {
     if (data.image && typeof data.image === 'object') {
         data.image = await uploadImage(data.image);
@@ -84,6 +92,7 @@ export async function createProject(project) {
     if (auth.currentUser) {
         project.id = createID();
         project.creator = auth.currentUser.uid;
+        project.members.push(auth.currentUser.uid);
         return await getProjects().doc(project.id).set(project);    
     }
     return null;
