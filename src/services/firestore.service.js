@@ -32,6 +32,10 @@ export function getProjects() {
     return firestore.collection('projects');
 }
 
+export function getProjectsByName(name) {
+    return getProjects().where('name', '>=', name);
+}
+
 export function getProject(id) {
     return getProjects().doc(id);
 }
