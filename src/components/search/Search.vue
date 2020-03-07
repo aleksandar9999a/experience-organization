@@ -10,7 +10,10 @@
         <md-button class="md-raised md-primary" @click="search">Search</md-button>
       </div>
     </div>
-    <List :documents="documents" />
+    <List v-if="documents.length > 0" :documents="documents" />
+    <div v-else>
+      <h2 class="md-display-2">Try to search something!</h2>
+    </div>
   </div>
 </template>
 
@@ -53,7 +56,8 @@ export default {
   margin: auto;
 }
 
-.md-display-3 {
+.md-display-3,
+.md-display-2 {
   text-align: center;
   margin-top: 8%;
 }
