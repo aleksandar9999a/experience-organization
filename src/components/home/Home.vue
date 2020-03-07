@@ -56,8 +56,8 @@ export default {
       changeShowDialog();
     }
   },
-  firestore: {
-    documents: getProjects()
+  created: function(){
+      this.$bind('documents', getProjects());
   }
 };
 </script>
