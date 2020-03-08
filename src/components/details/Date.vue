@@ -8,16 +8,7 @@
 <script>
 export default {
   name: "Date",
-  props: ['start', 'end'],
-  data: function() {
-    return {
-        
-    };
-  },
-  created: function() {
-      console.log(this.start);
-       console.log(this.end);
-  }
+  props: ['start', 'end']
 };
 </script>
 
