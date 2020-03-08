@@ -66,6 +66,7 @@ export default {
 <style>
 .md-app-content{
    padding: 0;
+   overflow: hidden;
    background: linear-gradient(to right, #ffefba, #ffffff) !important;
 }
 
