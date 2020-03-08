@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3 class="md-display-1">Diary</h3>
     <div>
       <md-list class="md-triple-line" v-if="diary.length > 0">
         <DiaryItem v-for="(item, index) of diary" :key="index" :item="item" />
@@ -19,7 +20,7 @@
 
 <script>
 import DiaryItem from "./DiaryItem";
-import { updateDiaryFromProject } from "./../../services/firestore.service";
+import { updateDiaryFromProject } from "./../../../services/firestore.service";
 
 export default {
   name: "Diary",
@@ -47,6 +48,11 @@ export default {
 .submit-form {
   margin: 20px;
 }
+
+.md-display-1{
+    text-align: center;
+}
+
 .md-field {
   width: 80%;
   margin: auto;

@@ -6,22 +6,10 @@
         <h2 class="md-subheading">{{data.description}}</h2>
       </div>
       <div class="second-wrapper">
-        <div class="info">
-          <h3 class="md-display-1">Steps</h3>
-          <div class="steps-div">
-            <Stepper :steps="data.steps" />
-          </div>
-          <h3 class="md-display-1">Members</h3>
-          <div class="chips-div">
-            <Chips class="chips" :members="data.members" />
-          </div>
-          <h3 class="md-display-1">Date</h3>
-          <div class="date-div">
-            <Date :start="data.start" :end="data.end" />
-          </div>
+        <div class="info" v-if="data">
+          <Information :data="data"/>
         </div>
         <div class="diary">
-            <h3 class="md-display-1">Diary</h3>
             <Diary :projectId="data.id" :diary="data.diary" />
         </div>
       </div>
@@ -34,20 +22,16 @@
 
 <script>
 import { getProject } from "./../../services/firestore.service";
-import Stepper from "./Stepper";
-import Chips from "./Chips";
-import Date from "./Date";
+import Diary from "./Diary/Diary";
+import Information from "./Information/Information";
 import Status from "./Status";
-import Diary from "./Diary";
 
 export default {
   name: "Details",
   components: {
-    Stepper,
-    Chips,
-    Date,
-    Status,
-    Diary
+    Information,
+    Diary,
+    Status
   },
   data: function() {
     return {
@@ -71,8 +55,9 @@ export default {
 }
 
 .second-wrapper{
-    display: inline-flex;
+    display: flex;
     width: 100%;
+    overflow: hidden;
 }
 
 .info,

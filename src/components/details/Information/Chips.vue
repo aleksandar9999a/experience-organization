@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="members">
     <md-chip v-for="member of users" :key="member.uid" class="md-primary">
       <md-avatar class="chips-img">
         <img :src="member.image" class="chips-avatar" alt="member" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { getUser } from "./../../services/firestore.service";
+import { getUser } from "./../../../services/firestore.service";
 
 export default {
   name: "Chips",
@@ -31,6 +31,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.members{
+  margin: auto;
+}
 .chips-img {
   height: 25px;
   width: auto;

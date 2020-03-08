@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import timestampConverter from "./timestamp-converter";
+import timestampConverter from "./../timestamp-converter";
 
 export default {
   name: "Steppers",
