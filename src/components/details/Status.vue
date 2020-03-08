@@ -1,6 +1,6 @@
 <template>
   <div class="status-div">
-    <div class="status" @click="edit = !edit">
+    <div class="status">
       <div v-if="edit">
         <md-field>
           <md-select v-model="newStatus" name="status-select" id="status-select">
@@ -9,7 +9,7 @@
           </md-select>
         </md-field>
       </div>
-      <div v-else>{{status}}</div>
+      <div v-else @click="edit = !edit">{{status}}</div>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   props: ["status", "projectId"],
   data: function() {
     return {
-      edit: true,
+      edit: false,
       newStatus: null
     };
   },
@@ -32,8 +32,9 @@ export default {
   watch: {
     newStatus: function() {
       if (this.newStatus !== this.status) {
-        updateFieldFromProject(this.projectId, "status", this.newStatus);
-        this.edit = false;
+        updateFieldFromProject(this.projectId, "status", this.newStatus).then(() => {
+          this.edit = false;
+        });
       }
     }
   }
