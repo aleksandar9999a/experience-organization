@@ -2,16 +2,20 @@
   <div class="details">
     <div v-if="data" class="wrapper">
       <div class="title-div">
-        <h3 class="md-display-3">{{data.name}}</h3>
-        <h4 class="md-display-2">{{data.description}}</h4>
+        <h1 class="md-display-3">{{data.name}}</h1>
+        <h2 class="md-display-2">{{data.description}}</h2>
       </div>
-      <h4 class="md-display-1">Steps</h4>
+      <h3 class="md-display-1">Steps</h3>
       <div class="steps-div">
         <Stepper :steps="data.steps" />
       </div>
-      <h4 class="md-display-1">Members</h4>
+      <h3 class="md-display-1">Members</h3>
       <div class="chips-div">
         <Chips class="chips" :members="data.members" />
+      </div>
+       <h3 class="md-display-1">Date</h3>
+      <div class="date-div">
+          <Date :start="data.start" :end="data.end"/>
       </div>
     </div>
   </div>
@@ -21,12 +25,14 @@
 import { getProject } from "./../../services/firestore.service";
 import Stepper from "./Stepper";
 import Chips from "./Chips";
+import Date from "./Date";
 
 export default {
   name: "Details",
   components: {
     Stepper,
-    Chips
+    Chips,
+    Date
   },
   data: function() {
     return {
