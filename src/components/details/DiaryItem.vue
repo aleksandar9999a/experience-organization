@@ -17,6 +17,7 @@
 
 <script>
 import { getUser } from "./../../services/firestore.service";
+import timestampConverter from "./timestamp-converter";
 
 export default {
   name: "DiaryItem",
@@ -28,16 +29,10 @@ export default {
       timestamp: null
     };
   },
-  methods: {
-    generateDate(timestamp) {
-      return `${timestamp.getDate()}/${timestamp.getMonth() +
-        1}/${timestamp.getFullYear()}`;
-    }
-  },
   created: function() {
     this.$bind("user", getUser(this.item.user));
     this.text = this.item.text;
-    this.timestamp = this.generateDate(this.item.timestamp.toDate());
+    this.timestamp = timestampConverter(this.item.timestamp);
   }
 };
 </script>
