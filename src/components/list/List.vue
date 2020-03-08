@@ -10,11 +10,11 @@
               </div>
               <div v-if="doc.status === 'Active'">
                 <span class="md-list-item-text item-title">Start Time</span>
-                <span class="md-list-item-text">{{doc.start}}</span>
+                <span class="md-list-item-text">{{generateDate(doc.start)}}</span>
               </div>
               <div v-else>
                 <span class="md-list-item-text item-title">End Time</span>
-                <span class="md-list-item-text">{{doc.end}}</span>
+                <span class="md-list-item-text">{{generateDate(doc.end)}}</span>
               </div>
               <div class="item-status">
                 <span class="md-list-item-text">{{doc.status}}</span>
@@ -30,6 +30,12 @@ export default {
     name: 'List',
     props: {
         documents: Array
+    },
+    methods: {
+      generateDate(timestamp) {
+        const date = timestamp.toDate();
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+      }
     }
 }
 </script>
