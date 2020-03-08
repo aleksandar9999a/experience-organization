@@ -4,6 +4,7 @@ import Home from './components/home/Home'
 import Sign from './components/auth/Sign'
 import MyProjects from './components/my-projects/MyProjects'
 import Search from './components/search/Search'
+import Details from './components/details/Details'
 import { auth } from './firebase'
 Vue.use(VueRouter)
 
@@ -12,6 +13,7 @@ const organizationRoutes = {
         { path: '/', component: Home, meta: { requiresAuth: true } },
         { path: '/my_projects', component: MyProjects, meta: { requiresAuth: true } },
         { path: '/search', component: Search, meta: { requiresAuth: true } },
+        { path: '/details/:id', component: Details, meta: { requiresAuth: true } },
         { path: '/auth', component: Sign }
     ],
     mode: 'history'
