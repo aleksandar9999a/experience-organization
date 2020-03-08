@@ -8,6 +8,10 @@
       <span>{{user.firstName}} {{user.lastName}}</span>
       <span>{{text}}</span>
     </div>
+
+    <div>
+      <span>{{timestamp}}</span>
+    </div>
   </md-list-item>
 </template>
 
@@ -20,12 +24,20 @@ export default {
   data: function() {
     return {
       user: null,
-      text: null
+      text: null,
+      timestamp: null
     };
   },
-  created: function(){
-      this.$bind('user', getUser(this.item.user));
-      this.text = this.item.text;
+  methods: {
+    generateDate(timestamp) {
+      return `${timestamp.getDate()}/${timestamp.getMonth() +
+        1}/${timestamp.getFullYear()}`;
+    }
+  },
+  created: function() {
+    this.$bind("user", getUser(this.item.user));
+    this.text = this.item.text;
+    this.timestamp = this.generateDate(this.item.timestamp.toDate());
   }
 };
 </script>
