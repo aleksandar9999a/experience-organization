@@ -72,6 +72,10 @@ function updateOneFieldFromProfile(field, data) {
     return getMyProfile().update({ [field]: data });
 }
 
+export async function updateFieldFromProject(id, field, value){
+    return getProject(id).update({[field]: value});
+}
+
 export async function updateProfileImage(image) {
     let url;
     if (typeof image === 'object') {
