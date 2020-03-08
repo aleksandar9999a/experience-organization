@@ -5,17 +5,22 @@
         <h1 class="md-display-3">{{data.name}}</h1>
         <h2 class="md-display-2">{{data.description}}</h2>
       </div>
-      <h3 class="md-display-1">Steps</h3>
-      <div class="steps-div">
-        <Stepper :steps="data.steps" />
-      </div>
-      <h3 class="md-display-1">Members</h3>
-      <div class="chips-div">
-        <Chips class="chips" :members="data.members" />
-      </div>
-       <h3 class="md-display-1">Date</h3>
-      <div class="date-div">
-          <Date :start="data.start" :end="data.end"/>
+      <div class="info">
+        <h3 class="md-display-1">Steps</h3>
+        <div class="steps-div">
+          <Stepper :steps="data.steps" />
+        </div>
+        <h3 class="md-display-1">Members</h3>
+        <div class="chips-div">
+          <Chips class="chips" :members="data.members" />
+        </div>
+        <h3 class="md-display-1">Date</h3>
+        <div class="date-div">
+          <Date :start="data.start" :end="data.end" />
+        </div>
+        <div class="status-div">
+          <Status :status="data.status" />
+        </div>
       </div>
     </div>
   </div>
@@ -26,13 +31,15 @@ import { getProject } from "./../../services/firestore.service";
 import Stepper from "./Stepper";
 import Chips from "./Chips";
 import Date from "./Date";
+import Status from "./Status";
 
 export default {
   name: "Details",
   components: {
     Stepper,
     Chips,
-    Date
+    Date,
+    Status
   },
   data: function() {
     return {
@@ -55,19 +62,23 @@ export default {
   margin-right: auto;
 }
 
+.info{
+    padding: 50px;
+}
+
 .title-div {
   text-align: center;
 }
 
-.steps-div{
-    margin: 20px;
+.steps-div {
+  margin: 20px;
 }
 
-.chips-div{
-    display: flex;
-    margin: 20px;
+.chips-div {
+  display: flex;
+  margin: 20px;
 }
-.chips{
-    margin-right: auto;
+.chips {
+  margin-right: auto;
 }
 </style>
