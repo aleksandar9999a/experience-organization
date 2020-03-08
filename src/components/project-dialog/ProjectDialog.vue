@@ -27,7 +27,8 @@
 import {
   getShowDialog,
   changeShowDialog,
-  submitProject
+  submitProject,
+  clear
 } from "./../../services/project-dialog.service";
 import Information from "./Information";
 import Members from "./Members";
@@ -39,6 +40,7 @@ export default {
   methods: {
     changeState() {
       changeShowDialog();
+      clear();
     },
     createProject(){
         submitProject();
