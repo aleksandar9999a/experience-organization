@@ -1,4 +1,5 @@
 import { auth, firestore, storage } from "./../firebase";
+import firebase from 'firebase/app';
 
 export async function setUserData(data) {
     return await setData(data, `users/${data.uid}`);
@@ -72,8 +73,22 @@ function updateOneFieldFromProfile(field, data) {
     return getMyProfile().update({ [field]: data });
 }
 
-export async function updateFieldFromProject(id, field, value){
-    return getProject(id).update({[field]: value});
+export async function updateFieldFromProject(id, field, value) {
+    return getProject(id).update({ [field]: value });
+}
+
+export async function updateDiaryFromProject(id, value) {
+    if (auth.currentUser) {
+        const newMessage = {
+            user: auth.currentUser.uid,
+            text: value,
+            timestamp: new Date()
+        }
+
+        return getProject(id).update({
+            diary: firebase.firestore.FieldValue.arrayUnion(newMessage)
+        });
+    }
 }
 
 export async function updateProfileImage(image) {
@@ -97,7 +112,7 @@ export async function createProject(project) {
         project.id = createID();
         project.creator = auth.currentUser.uid;
         project.members.push(auth.currentUser.uid);
-        return await getProjects().doc(project.id).set(project);    
+        return await getProjects().doc(project.id).set(project);
     }
     return null;
 }
