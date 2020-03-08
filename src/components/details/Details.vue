@@ -4,27 +4,20 @@
       {{data}}
       <h3 class="md-display-2">{{data.name}}</h3>
       <h4 class="md-display-1">{{data.description}}</h4>
-      <md-steppers md-vertical>
-        <md-step
-          v-for="(step, index) of data.steps"
-          :key="index"
-          :id="step.id"
-          :md-label="step.name"
-        >
-          {{step.description}}
-          <div v-if="step.start">{{step.start}}</div>
-          <div v-if="step.end">{{step.end}}</div>
-        </md-step>
-      </md-steppers>
+      <Stepper :steps="data.steps" />
     </div>
   </div>
 </template>
 
 <script>
 import { getProject } from "./../../services/firestore.service";
+import Stepper from './Stepper';
 
 export default {
   name: "Details",
+  components: {
+      Stepper
+  },
   data: function() {
     return {
       data: null
