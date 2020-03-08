@@ -5,7 +5,7 @@
         <h1 class="md-display-3">{{data.name}}</h1>
         <h2 class="md-subheading">{{data.description}}</h2>
       </div>
-      <div class="second-wrapper">
+      <div class="second-wrapper" v-if="isMember">
         <div class="info" v-if="data">
           <Information :data="data"/>
         </div>
@@ -13,8 +13,11 @@
             <Diary :projectId="data.id" :diary="data.diary" />
         </div>
       </div>
-      <div class="status-div">
+      <div class="status-div" v-if="isMember">
         <Status :status="data.status" :projectId="data.id" />
+      </div>
+      <div class="not-a-member" v-else> 
+        <h1 class="md-display-2">Sorry, You must be a member to view all information.</h1>
       </div>
     </div>
   </div>
@@ -22,6 +25,7 @@
 
 <script>
 import { getProject } from "./../../services/firestore.service";
+import { auth } from "./../../firebase";
 import Diary from "./Diary/Diary";
 import Information from "./Information/Information";
 import Status from "./Status";
@@ -40,6 +44,17 @@ export default {
   },
   created: function() {
     this.$bind("data", getProject(this.$route.params.id));
+  },
+  computed: {
+    isMember: function(){
+      if (auth.currentUser && this.data) {
+        const uid = auth.currentUser.uid;
+        if (this.data.members.includes(uid)) {
+          return true;
+        }
+      }
+      return false;
+    }
   }
 };
 </script>
@@ -47,9 +62,23 @@ export default {
 <style lang="scss" scoped>
 .details {
   display: flex;
+  height: inherit;
+  margin: 2%;
 }
+
+.not-a-member{
+  height: inherit;
+  display: flex;
+}
+
+.md-display-2{
+  margin: auto;
+  text-align: center;
+}
+
 .wrapper {
   width: 80%;
+  height: inherit;
   margin-left: auto;
   margin-right: auto;
 }
@@ -57,7 +86,6 @@ export default {
 .second-wrapper{
     display: flex;
     width: 100%;
-    overflow: hidden;
 }
 
 .info,
