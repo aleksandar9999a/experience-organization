@@ -19,7 +19,7 @@
           <Date :start="data.start" :end="data.end" />
         </div>
         <div class="status-div">
-          <Status :status="data.status" />
+          <Status :status="data.status" :projectId="data.id" />
         </div>
       </div>
     </div>
