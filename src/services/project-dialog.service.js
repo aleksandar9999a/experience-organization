@@ -113,6 +113,7 @@ export function submitProject() {
             steps: dialog.steps,
             start: dialog.start,
             end: dialog.end,
+            diary: [],
             status: 'Active'
         };
         addNotification('Time to create a new project!');
