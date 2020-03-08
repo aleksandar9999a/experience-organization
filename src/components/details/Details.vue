@@ -22,7 +22,7 @@
         </div>
         <div class="diary">
             <h3 class="md-display-1">Diary</h3>
-            <Diary :projectId="data.id" />
+            <Diary :projectId="data.id" :diary="data.diary" />
         </div>
       </div>
       <div class="status-div">
