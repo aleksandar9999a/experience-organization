@@ -1,5 +1,5 @@
 <template>
-  <md-dialog :md-active="state">
+  <md-dialog :md-active="state" :md-closed="clearForm">
     <md-dialog-title>New Project</md-dialog-title>
 
     <md-tabs md-dynamic-height md-alignment="centered">
@@ -40,10 +40,12 @@ export default {
   methods: {
     changeState() {
       changeShowDialog();
-      clear();
     },
     createProject(){
         submitProject();
+    },
+    clearForm(){
+      clear();
     }
   },
   computed: {
