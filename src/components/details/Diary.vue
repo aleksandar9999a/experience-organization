@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <md-list class="md-triple-line">
+      <md-list class="md-triple-line" v-if="diary.length > 0">
         <DiaryItem v-for="(item, index) of diary" :key="index" :item="item" />
       </md-list>
     </div>
@@ -11,7 +11,7 @@
         <md-input v-model="text"></md-input>
       </md-field>
       <div class="submit-btn">
-      <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+        <md-button type="submit" class="md-raised md-primary">Submit</md-button>
       </div>
     </form>
   </div>
@@ -33,26 +33,28 @@ export default {
     };
   },
   methods: {
-      handleSubmit(e){
-          e.preventDefault();
-          updateDiaryFromProject(this.projectId, this.text);
-      }
+    handleSubmit(e) {
+      e.preventDefault();
+      updateDiaryFromProject(this.projectId, this.text).then(
+        () => (this.text = null)
+      );
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.submit-form{
-    margin: 20px;
+.submit-form {
+  margin: 20px;
 }
 .md-field {
   width: 80%;
   margin: auto;
 }
 
-.submit-btn{
-    display: flex;
-    margin: 20px;
+.submit-btn {
+  display: flex;
+  margin: 20px;
 }
 
 .md-button {
