@@ -99,6 +99,15 @@ function checkStep(step) {
     return true;
 }
 
+export function clear(){
+    dialog.description = '';
+    dialog.name = '';
+    dialog.start = null;
+    dialog.end = null;
+    dialog.members = [];
+    dialog.steps = [{ id: '1', name: 'Write name!', description: 'Write description!', start: null, end: null }];
+}
+
 export function submitProject() {
     if (checkDataIsValid()) {
         const members = dialog.members.map(user => user.uid);
@@ -112,8 +121,12 @@ export function submitProject() {
             diary: [],
             status: 'Active'
         };
-        addNotification('Time to create a new project!');
-        return createProject(project);
+        
+        return createProject(project).then(() => {
+            clear();
+            changeShowDialog();
+            addNotification('Time to create a new project!');
+        });
     }
     return null;
 }
