@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import DiaryItem from "./DiaryItem";
+import DiaryItem from "./components/DiaryItem";
 import { updateDiaryFromProject } from "./../../../services/firestore.service";
 
 export default {

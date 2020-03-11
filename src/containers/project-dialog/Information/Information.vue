@@ -29,7 +29,7 @@ import {
   setDesc,
   setStartDate,
   setEndDate
-} from "./../../services/project-dialog.service";
+} from "./../../../services/project-dialog.service";
 
 export default {
   name: "Information",

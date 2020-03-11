@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { getUser } from "./../../../services/firestore.service";
+import { getUser } from "./../../../../services/firestore.service";
 
 export default {
   name: "Chips",

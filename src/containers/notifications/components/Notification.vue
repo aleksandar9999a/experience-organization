@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { removeNotificationByIndex } from "./../../services/notifications";
+import { removeNotificationByIndex } from "./../../../services/notifications";
 export default {
   name: "Notification",
   props: ["msg", "id"],

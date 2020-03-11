@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { updateFieldFromProject } from "./../../services/firestore.service";
+import { updateFieldFromProject } from "./../../../services/firestore.service";
 
 export default {
   name: "Status",

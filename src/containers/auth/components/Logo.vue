@@ -1,6 +1,6 @@
 <template>
   <div class="logo-container">
-    <img src="./../../assets/logo.png" />
+    <img src="./../../../assets/logo.png" />
     <h1 class="md-display-3">Experience Organizer</h1>
     <h5 class="md-subheading">A beautiful application for easy organization tracking!</h5>
   </div>

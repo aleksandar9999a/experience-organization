@@ -12,7 +12,7 @@
 
 <script>
 import { getNotificationsList } from "./../../services/notifications";
-import Notification from "./Notification";
+import Notification from "./components/Notification";
 
 export default {
   name: "Notifications",

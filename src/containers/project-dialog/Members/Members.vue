@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import { getMembers, removeMember } from "./../../services/project-dialog.service";
-import { searchUserByName } from "./../../services/firestore.service";
-import { addNotification } from "./../../services/notifications";
+import { getMembers, removeMember } from "./../../../services/project-dialog.service";
+import { searchUserByName } from "./../../../services/firestore.service";
+import { addNotification } from "./../../../services/notifications";
 
 export default {
   name: "Members",

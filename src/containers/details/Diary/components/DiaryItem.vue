@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { getUser } from "./../../../services/firestore.service";
-import timestampConverter from "./../timestamp-converter";
+import { getUser } from "./../../../../services/firestore.service";
+import timestampConverter from "./../../timestamp-converter";
 
 export default {
   name: "DiaryItem",

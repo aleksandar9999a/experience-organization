@@ -36,7 +36,7 @@ import {
   getMyProfile,
   updateProfileImage,
   updateNames
-} from "./../../services/firestore.service";
+} from "./../../../services/firestore.service";
 
 export default {
   name: "ProfileInformation",

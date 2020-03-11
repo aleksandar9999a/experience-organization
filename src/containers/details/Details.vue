@@ -28,7 +28,7 @@ import { getProject } from "./../../services/firestore.service";
 import { auth } from "./../../firebase";
 import Diary from "./Diary/Diary";
 import Information from "./Information/Information";
-import Status from "./Status";
+import Status from "./Status/Status";
 
 export default {
   name: "Details",

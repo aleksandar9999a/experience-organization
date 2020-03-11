@@ -30,9 +30,9 @@ import {
   submitProject,
   clear
 } from "./../../services/project-dialog.service";
-import Information from "./Information";
-import Members from "./Members";
-import Steps from "./Steps";
+import Information from "./Information/Information";
+import Members from "./Members/Members";
+import Steps from "./Steps/Steps";
 
 export default {
   name: "ProjectDialog",

@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import Stepper from "./Stepper";
-import Chips from "./Chips";
-import Date from "./Date";
+import Stepper from "./components/Stepper";
+import Chips from "./components/Chips";
+import Date from "./components/Date";
 
 export default {
   name: "Information",

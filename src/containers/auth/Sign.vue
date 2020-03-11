@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Logo from "./Logo";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Logo from "./components/Logo";
 
 export default {
   name: "Sign",

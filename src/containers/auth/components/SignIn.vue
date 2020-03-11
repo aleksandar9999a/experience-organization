@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import { signIn } from "./../../services/auth.service";
-import { addNotification } from "./../../services/notifications";
+import { signIn } from "./../../../services/auth.service";
+import { addNotification } from "./../../../services/notifications";
 import { validationMixin } from "vuelidate";
 import {
   required,

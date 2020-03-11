@@ -31,7 +31,7 @@
 <script>
 import { logOut } from "./../../services/auth.service";
 import { changeShowDialog } from "./../../services/project-dialog.service";
-import ProfileInformation from "./ProfileInformation";
+import ProfileInformation from "./ProfileInformation/ProfileInformation";
 
 export default {
   name: "Menu",

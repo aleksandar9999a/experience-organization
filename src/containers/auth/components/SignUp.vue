@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { signUp } from "./../../services/auth.service";
+import { signUp } from "./../../../services/auth.service";
 import { validationMixin } from "vuelidate";
 import {
   required,
@@ -84,7 +84,7 @@ import {
   minLength,
   maxLength
 } from "vuelidate/lib/validators";
-import { addNotification } from "./../../services/notifications";
+import { addNotification } from "./../../../services/notifications";
 
 const ageValidatior = value => value >= 18 && value <= 60;
 
