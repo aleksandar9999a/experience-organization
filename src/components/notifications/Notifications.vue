@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { notifications } from "./../../services/notifications";
+import { getNotificationsList } from "./../../services/notifications";
 import Notification from "./Notification";
 
 export default {
@@ -19,7 +19,7 @@ export default {
   components: { Notification },
   computed: {
     list: function() {
-      return notifications.list;
+      return getNotificationsList();
     }
   },
   data: () => ({
