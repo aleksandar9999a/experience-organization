@@ -119,6 +119,7 @@ export function submitProject() {
             start: dialog.start,
             end: dialog.end,
             diary: [],
+            requests: [],
             status: 'Active'
         };
         
