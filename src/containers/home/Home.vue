@@ -19,7 +19,7 @@
 <script>
 import { getProjectsWhereIAmMember } from "./../../services/firestore.service";
 import { changeShowDialog } from "./../../services/project-dialog.service";
-import List from "./../list/List";
+import List from "./../../components/list/List";
 
 export default {
   name: "home",

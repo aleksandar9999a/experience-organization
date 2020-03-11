@@ -19,7 +19,7 @@
 
 <script>
 import { getProjectsByName } from "./../../services/firestore.service";
-import List from "./../list/List";
+import List from "./../../components/list/List";
 
 export default {
   name: "Search",
