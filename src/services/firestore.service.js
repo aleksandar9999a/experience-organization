@@ -85,10 +85,20 @@ export async function updateDiaryFromProject(id, value) {
             timestamp: new Date()
         }
 
-        return getProject(id).update({
+        return await getProject(id).update({
             diary: firebase.firestore.FieldValue.arrayUnion(newMessage)
         });
     }
+}
+
+export function makeRequestToBeMember(id) {
+    if (auth.currentUser) {
+        const uid = auth.currentUser.uid;
+        return getProject(id).update({
+            requests: firebase.firestore.FieldValue.arrayUnion(uid)
+        });
+    }
+    return null;
 }
 
 export async function updateProfileImage(image) {
