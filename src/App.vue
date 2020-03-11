@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import Menu from "./components/menu/Menu";
-import Notifications from "./components/notifications/Notifications";
-import Loader from "./components/loader/Loader";
+import Menu from "./containers/menu/Menu";
+import Notifications from "./containers/notifications/Notifications";
+import Loader from "./containers/loader/Loader";
 import { auth } from "./firebase";
 import { addNotification } from "./services/notifications";
-import ProjectDialog from './components/project-dialog/ProjectDialog';
+import ProjectDialog from './containers/project-dialog/ProjectDialog';
 import { logOut } from "./services/auth.service";
 
 export default {

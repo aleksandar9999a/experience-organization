@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import { loaderState } from '../../services/loader'
+import { getLoaderState } from '../../services/loader'
 
 export default {
   name: "Loader",
   computed: {
     state: function() {
-      return loaderState.loader;
+      return getLoaderState();
     }
   }
 };

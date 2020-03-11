@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from './components/home/Home'
-import Sign from './components/auth/Sign'
-import MyProjects from './components/my-projects/MyProjects'
-import Search from './components/search/Search'
-import Details from './components/details/Details'
+import Home from './containers/home/Home'
+import Sign from './containers/auth/Sign'
+import MyProjects from './containers/my-projects/MyProjects'
+import Search from './containers/search/Search'
+import Details from './containers/details/Details'
 import { auth } from './firebase'
 Vue.use(VueRouter)
 
