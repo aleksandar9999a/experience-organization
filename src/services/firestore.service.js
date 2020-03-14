@@ -91,6 +91,19 @@ export async function updateDiaryFromProject(id, value) {
     }
 }
 
+export async function updateMembersFromProject(id, value) {
+    if (auth.currentUser) {
+        const ref = getProject(id);
+        return await ref.update({
+            members: firebase.firestore.FieldValue.arrayUnion(value)
+        }).then(() => {
+            ref.update({
+                requests: firebase.firestore.FieldValue.arrayRemove(value)
+            })
+        });
+    }
+}
+
 export function makeRequestToBeMember(id) {
     if (auth.currentUser) {
         const uid = auth.currentUser.uid;
