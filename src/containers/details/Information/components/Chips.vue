@@ -6,32 +6,69 @@
       </md-avatar>
       {{ member.firstName }} {{member.lastName}}
     </md-chip>
+
+    <md-autocomplete v-model="searchTerm" @md-selected="selectUser" :md-options="newUsers">
+      <label>Requests</label>
+      <template slot="md-autocomplete-item" slot-scope="{ item }">
+        <md-avatar>
+          <img :src="item.image" alt="user" />
+        </md-avatar>
+        <span class="md-list-item-text">{{ item.firstName }} {{item.lastName}}</span>
+      </template>
+    </md-autocomplete>
   </div>
 </template>
 
 <script>
-import { getUser } from "./../../../../services/firestore.service";
+import {
+  getUser,
+  updateMembersFromProject
+} from "./../../../../services/firestore.service";
 
 export default {
   name: "Chips",
-  props: ["members"],
+  props: ["id", "members", "requests"],
   data: function() {
     return {
-      users: []
+      users: [],
+      newUsers: [],
+      searchTerm: null
     };
   },
-  created: function() {
-    this.members.forEach(member => {
-      getUser(member).onSnapshot(userdata => {
-        this.users.push(userdata.data());
+  methods: {
+    getMembers() {
+      this.users = [];
+      this.members.forEach(uid => {
+        getUser(uid).onSnapshot(userdata => {
+          this.users.push(userdata.data());
+        });
       });
-    });
+    },
+    getRequests() {
+      this.newUsers = [];
+      this.requests.forEach(uid => {
+        getUser(uid).onSnapshot(userdata => {
+          this.newUsers.push(userdata.data());
+        });
+      });
+    },
+    selectUser(user) {
+      this.searchTerm = user.firstName;
+      updateMembersFromProject(this.id, user.uid).finally(() => {
+        this.getMembers();
+        this.getRequests();
+      });
+    }
+  },
+  created: function() {
+    this.getMembers();
+    this.getRequests();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.members{
+.members {
   margin: auto;
 }
 .chips-img {
@@ -45,7 +82,7 @@ export default {
   width: inherit;
 }
 
-.md-chip{
-    margin: 10px;
+.md-chip {
+  margin: 10px;
 }
 </style>
