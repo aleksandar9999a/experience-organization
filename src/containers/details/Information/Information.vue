@@ -6,7 +6,7 @@
     </div>
     <h3 class="md-display-1">Members</h3>
     <div class="chips-div">
-      <Chips class="chips" :members="data.members" />
+      <Chips class="chips" :id="data.id" :members="data.members" :requests="data.requests" />
     </div>
     <h3 class="md-display-1">Date</h3>
     <div class="date-div">
