@@ -27,5 +27,6 @@ export default {
 
 .md-title{
     width: 50%;
+    text-align: center;
 }
 </style>
