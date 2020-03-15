@@ -1,24 +1,31 @@
-# experience-organization
+<img src="https://github.com/aleksandar9999a/experience-organizer/blob/master/src/assets/logo.png" width="250" />
 
-## Project setup
-```
-npm install
-```
+# Experience Organizer
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## What is this?
+* Web Application.
+* Project for SoftUni VueJS 2020.
+* A solution for people looking for how to manage their projects.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Features
+* Authentication
+* Create new projects
+* Manage projects
+* Track their progress
+* etc. 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Dependencies
+* VueJS
+* VueMatererial
+* Vuelidate
+* Vue Router
+* Firebase
+
+## How to run it?
+
+```bash
+    npm install
+
+    npm run serve
+```
