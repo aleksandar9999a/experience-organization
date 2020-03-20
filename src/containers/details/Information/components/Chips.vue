@@ -27,7 +27,11 @@ import {
 
 export default {
   name: "Chips",
-  props: ["id", "members", "requests"],
+  props: {
+    id: String,
+    members: Array,
+    requests: Array
+  },
   data: function() {
     return {
       users: [],
@@ -38,19 +42,23 @@ export default {
   methods: {
     getMembers() {
       this.users = [];
-      this.members.filter(uid => uid !== '').forEach(uid => {
-        getUser(uid).onSnapshot(userdata => {
-          this.users.push(userdata.data());
+      this.members
+        .filter(uid => uid !== "")
+        .forEach(uid => {
+          getUser(uid).onSnapshot(userdata => {
+            this.users.push(userdata.data());
+          });
         });
-      });
     },
     getRequests() {
       this.newUsers = [];
-      this.requests.filter(uid => uid !== '').forEach(uid => {
-        getUser(uid).onSnapshot(userdata => {
-          this.newUsers.push(userdata.data());
+      this.requests
+        .filter(uid => uid !== "")
+        .forEach(uid => {
+          getUser(uid).onSnapshot(userdata => {
+            this.newUsers.push(userdata.data());
+          });
         });
-      });
     },
     selectUser(user) {
       this.searchTerm = user.firstName;

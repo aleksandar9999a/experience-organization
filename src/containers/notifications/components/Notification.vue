@@ -11,11 +11,14 @@
 import { removeNotificationByIndex } from "./../../../services/notifications";
 export default {
   name: "Notification",
-  props: ["msg", "id"],
+  props: {
+    msg: String,
+    id: Number
+  },
   methods: {
-      removeNotification(){
-          removeNotificationByIndex(this.id);
-      }
+    removeNotification() {
+      removeNotificationByIndex(this.id);
+    }
   }
 };
 </script>
@@ -36,9 +39,8 @@ export default {
   box-shadow: 15px 10px 30px grey;
 }
 
-.md-button{
+.md-button {
   margin-bottom: auto;
   margin-top: auto;
 }
-
 </style>

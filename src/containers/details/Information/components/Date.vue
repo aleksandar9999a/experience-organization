@@ -8,18 +8,21 @@
 <script>
 export default {
   name: "Date",
-  props: ['start', 'end']
+  props: { 
+    start: Object, 
+    end: Object
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-.date{
-    display: inline-flex;
-    width: 100%;
+.date {
+  display: inline-flex;
+  width: 100%;
 }
 
-.md-title{
-    width: 50%;
-    text-align: center;
+.md-title {
+  width: 50%;
+  text-align: center;
 }
 </style>

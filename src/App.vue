@@ -44,9 +44,6 @@ export default {
     };
   },
   methods: {
-    setMenuVisible(state) {
-      this.menuVisible = state;
-    },
     changeMenuState() {
       this.isVisible = !this.isVisible;
     },
@@ -58,7 +55,7 @@ export default {
     addNotification(err.message);
   },
   created: function() {
-    auth.onAuthStateChanged(u => this.setMenuVisible(!!u));
+    auth.onAuthStateChanged(u => this.menuVisible = !!u);
   }
 };
 </script>

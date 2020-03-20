@@ -27,7 +27,10 @@ export default {
   components: {
     DiaryItem
   },
-  props: ["projectId", "diary"],
+  props: {
+    projectId: String,
+    diary: Array
+  },
   data: function() {
     return {
       text: null
@@ -49,8 +52,8 @@ export default {
   margin: 20px;
 }
 
-.md-display-1{
-    text-align: center;
+.md-display-1 {
+  text-align: center;
 }
 
 .md-field {

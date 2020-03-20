@@ -1,34 +1,34 @@
 <template>
-    <md-list-item class="profile" v-if="user">
-      <div class="info">
-        <md-avatar class="md-large">
-          <label class="custom-file-upload">
-            <img :src="user.image" alt="People" />
-            <input type="file" @change="handleImage($event)" />
-          </label>
-        </md-avatar>
-        <div>
-          <p v-if="!edit" class="md-subheading" @click="changeForm">
-            {{user.firstName}} {{user.lastName}}
-            <md-icon class="edit" >edit</md-icon>
-          </p>
-          <form v-else @submit="handleSumbit">
-            <md-field>
-              <label>First Name</label>
-              <md-input v-model="firstName"></md-input>
-            </md-field>
-            <md-field>
-              <label>Last Name</label>
-              <md-input v-model="lastName"></md-input>
-            </md-field>
-            <div class="edit-form-btn">
-                <md-button type="submit" class="md-raised md-accent">Edit</md-button>
-                <md-button class="md-raised md-accent" @click="changeForm">Back</md-button>
-            </div>
-          </form>
-        </div>
+  <md-list-item class="profile" v-if="user">
+    <div class="info">
+      <md-avatar class="md-large">
+        <label class="custom-file-upload">
+          <img :src="user.image" alt="People" />
+          <input type="file" @change="handleImage" />
+        </label>
+      </md-avatar>
+      <div>
+        <p v-if="!edit" class="md-subheading" @click="changeForm">
+          {{user.firstName}} {{user.lastName}}
+          <md-icon class="edit">edit</md-icon>
+        </p>
+        <form v-else @submit="handleSumbit">
+          <md-field>
+            <label>First Name</label>
+            <md-input v-model="firstName"></md-input>
+          </md-field>
+          <md-field>
+            <label>Last Name</label>
+            <md-input v-model="lastName"></md-input>
+          </md-field>
+          <div class="edit-form-btn">
+            <md-button type="submit" class="md-raised md-accent">Edit</md-button>
+            <md-button class="md-raised md-accent" @click="changeForm">Back</md-button>
+          </div>
+        </form>
       </div>
-    </md-list-item>
+    </div>
+  </md-list-item>
 </template>
 
 <script>
@@ -54,14 +54,14 @@ export default {
         updateProfileImage(e.target.files[0]);
       }
     },
-    changeForm(){
-        this.firstName = this.user.firstName;
-        this.lastName = this.user.lastName;
-        this.edit = !this.edit;
+    changeForm() {
+      this.firstName = this.user.firstName;
+      this.lastName = this.user.lastName;
+      this.edit = !this.edit;
     },
-    handleSumbit(){
-        updateNames(this.firstName, this.lastName);
-        this.edit = !this.edit;
+    handleSumbit() {
+      updateNames(this.firstName, this.lastName);
+      this.edit = !this.edit;
     }
   },
   created: function() {
@@ -71,12 +71,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.md-field.md-focused label{
-    color: black;
+.md-field.md-focused label {
+  color: black;
 }
 
-.edit-form-btn{
-    display: flex;
+.edit-form-btn {
+  display: flex;
 }
 
 .edit {

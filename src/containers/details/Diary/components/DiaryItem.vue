@@ -20,7 +20,9 @@ import { getUser } from "./../../../../services/firestore.service";
 
 export default {
   name: "DiaryItem",
-  props: ["item"],
+  props: {
+    item: Object
+  },
   data: function() {
     return {
       user: null

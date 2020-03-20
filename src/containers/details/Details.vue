@@ -120,16 +120,4 @@ export default {
 .title-div {
   text-align: center;
 }
-
-.steps-div {
-  margin: 20px;
-}
-
-.chips-div {
-  display: flex;
-  margin: 20px;
-}
-.chips {
-  margin-right: auto;
-}
 </style>

@@ -5,7 +5,7 @@
 
       <hr />
 
-      <div class="time">
+      <div>
         <div v-if="step.start">Start at: {{step.start | date}}</div>
         <div v-if="step.end">End at: {{step.end | date}}</div>
       </div>
@@ -16,7 +16,9 @@
 <script>
 export default {
   name: "Steppers",
-  props: ["steps"]
+  props: {
+    steps: Array
+    }
 };
 </script>
 

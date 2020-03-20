@@ -4,19 +4,9 @@
       <md-button class="md-raised md-accent">Create Project</md-button>
     </md-list-item>
 
-    <md-list-item to="/">
-      <md-icon>dashboard</md-icon>
-      <span class="md-list-item-text">Dashboard</span>
-    </md-list-item>
-
-    <md-list-item to="/my_projects">
-      <md-icon>folder</md-icon>
-      <span class="md-list-item-text">My Projects</span>
-    </md-list-item>
-
-    <md-list-item to="/search">
-      <md-icon>search</md-icon>
-      <span class="md-list-item-text">Search</span>
+    <md-list-item v-for="(route, index) of routes" :key="index" :to="route.route">
+      <md-icon>{{route.icon}}</md-icon>
+      <span class="md-list-item-text">{{route.text}}</span>
     </md-list-item>
 
     <md-list-item @click="signOut">
@@ -32,6 +22,15 @@ import { changeShowDialog } from "./../../../services/project-dialog.service";
 
 export default {
   name: "ListOfRoutes",
+  data: function() {
+    return {
+      routes: [
+        { route: "/", icon: "dashboard", text: "Dashboard" },
+        { route: "/my_projects", icon: "folder", text: "My Projects" },
+        { route: "/search", icon: "search", text: "Search" }
+      ]
+    };
+  },
   methods: {
     signOut() {
       logOut();

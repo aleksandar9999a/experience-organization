@@ -9,8 +9,8 @@
           <SignUp v-else></SignUp>
           <div class="center">
             <p class="md-caption">Do you have an account?</p>
-            <md-button class="md-accent" v-if="state" @click="changeState()">Register</md-button>
-            <md-button class="md-accent" v-else @click="changeState()">Log In</md-button>
+            <md-button class="md-accent" v-if="state" @click="changeState">Register</md-button>
+            <md-button class="md-accent" v-else @click="changeState">Log In</md-button>
           </div>
         </div>
       </div>
