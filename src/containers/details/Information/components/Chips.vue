@@ -38,7 +38,7 @@ export default {
   methods: {
     getMembers() {
       this.users = [];
-      this.members.forEach(uid => {
+      this.members.filter(uid => uid !== '').forEach(uid => {
         getUser(uid).onSnapshot(userdata => {
           this.users.push(userdata.data());
         });
@@ -46,7 +46,7 @@ export default {
     },
     getRequests() {
       this.newUsers = [];
-      this.requests.forEach(uid => {
+      this.requests.filter(uid => uid !== '').forEach(uid => {
         getUser(uid).onSnapshot(userdata => {
           this.newUsers.push(userdata.data());
         });
