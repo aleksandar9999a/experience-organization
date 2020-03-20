@@ -6,24 +6,17 @@
       <hr />
 
       <div class="time">
-        <div v-if="step.start">Start at: {{generateDate(step.start)}}</div>
-        <div v-if="step.end">End at: {{generateDate(step.end)}}</div>
+        <div v-if="step.start">Start at: {{step.start | date}}</div>
+        <div v-if="step.end">End at: {{step.end | date}}</div>
       </div>
     </md-step>
   </md-steppers>
 </template>
 
 <script>
-import timestampConverter from "./../../timestamp-converter";
-
 export default {
   name: "Steppers",
-  props: ["steps"],
-  methods: {
-    generateDate(stamp) {
-      return timestampConverter(stamp);
-    }
-  }
+  props: ["steps"]
 };
 </script>
 

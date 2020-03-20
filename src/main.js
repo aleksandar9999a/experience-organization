@@ -12,6 +12,11 @@ Vue.use(Vuelidate)
 Vue.use(firestorePlugin)
 Vue.use(VueMaterial)
 
+Vue.filter('date', function (timestamp) {
+  const date = timestamp.toDate();
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+})
+
 Vue.config.productionTip = false
 
 new Vue({
