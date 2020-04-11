@@ -17,10 +17,24 @@
           <md-input v-model="password" type="password" v-model.trim="$v.password.$model"></md-input>
         </md-field>
         <div v-if="$v.password.$dirty" class="error">
-          <span v-if="!$v.password.required">Email is required!</span>
+          <span v-if="!$v.password.required">Password is required!</span>
           <span
             v-else-if="!$v.password.minLength || !$v.password.maxLength"
           >Minimum length is 8 chars, max - 20!</span>
+        </div>
+
+        <md-field md-has-password>
+          <label>Confirm Password</label>
+          <md-input v-model="confPassword" type="password" v-model.trim="$v.confPassword.$model"></md-input>
+        </md-field>
+        <div v-if="$v.confPassword.$dirty" class="error">
+          <span v-if="!$v.confPassword.required">Confirm Password is required!</span>
+          <span
+            v-else-if="!$v.confPassword.minLength || !$v.confPassword.maxLength"
+          >Minimum length is 8 chars, max - 20!</span>
+          <span
+            v-else-if="!$v.confPassword.sameAs"
+          >Confirm password and password must match!</span>
         </div>
 
         <md-field>
@@ -69,7 +83,11 @@
       </div>
 
       <div class="actions md-layout md-alignment-center">
-        <md-button class="md-raised md-primary" @click="registered" :disabled="this.$v.$invalid">Registered</md-button>
+        <md-button
+          class="md-raised md-primary"
+          @click="registered"
+          :disabled="this.$v.$invalid"
+        >Registered</md-button>
       </div>
     </div>
   </div>
@@ -82,7 +100,8 @@ import {
   required,
   email,
   minLength,
-  maxLength
+  maxLength,
+  sameAs
 } from "vuelidate/lib/validators";
 import { addNotification } from "./../../../services/notifications";
 
@@ -94,6 +113,7 @@ export default {
     return {
       email: "",
       password: "",
+      confPassword: "",
       firstName: "",
       lastName: "",
       gender: "",
@@ -104,6 +124,14 @@ export default {
   validations: {
     email: { required, email },
     password: { required, minLength: minLength(8), maxLength: maxLength(20) },
+    confPassword: {
+      required,
+      minLength: minLength(8),
+      maxLength: maxLength(20),
+      sameAs: sameAs(function() {
+        return this.password;
+      })
+    },
     firstName: { required, minLength: minLength(4), maxLength: maxLength(15) },
     lastName: { required, minLength: minLength(4), maxLength: maxLength(15) },
     gender: { required },
@@ -122,7 +150,7 @@ export default {
         };
         await signUp(data);
       } else {
-        addNotification('Form is invalid!');
+        addNotification("Form is invalid!");
       }
     }
   }
