@@ -19,7 +19,10 @@ import { updateFieldFromProject } from "./../../../services/firestore.service";
 
 export default {
   name: "Status",
-  props: ["status", "projectId"],
+  props: {
+    status: String, 
+    projectId: String
+    },
   data: function() {
     return {
       edit: false,

@@ -27,7 +27,9 @@ export default {
     Chips,
     Date
   },
-  props: ["data"]
+  props: {
+    data: Object
+  }
 };
 </script>
 

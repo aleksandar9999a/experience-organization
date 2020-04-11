@@ -6,7 +6,7 @@
         <DiaryItem v-for="(item, index) of diary" :key="index" :item="item" />
       </md-list>
     </div>
-    <form class="submit-form" @submit="handleSubmit">
+    <form class="submit-form" @submit="handleSubmit" v-if="status === 'Active'">
       <md-field>
         <label>What you make today?</label>
         <md-input v-model="text"></md-input>
@@ -29,7 +29,8 @@ export default {
   },
   props: {
     projectId: String,
-    diary: Array
+    diary: Array,
+    status: String
   },
   data: function() {
     return {

@@ -10,7 +10,7 @@
           <Information :data="data" />
         </div>
         <div class="diary">
-          <Diary :projectId="data.id" :diary="data.diary" />
+          <Diary :projectId="data.id" :diary="data.diary" :status="data.status" />
         </div>
       </div>
       <div class="status-div" v-if="isMember">
