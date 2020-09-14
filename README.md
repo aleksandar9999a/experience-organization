@@ -5,7 +5,6 @@
 
 ## What is this?
 * Web Application.
-* Project for SoftUni VueJS 2020.
 * A solution for people looking for how to manage their projects.
 
 ## Features
