@@ -22,6 +22,7 @@
 * Firebase
 
 ## How to run it?
+You need to create your firebase, copy its configuration and paste it in src/firebase.js.
 
 ```bash
     npm install
